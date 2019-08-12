@@ -1,0 +1,97 @@
+<form [formGroup]="formPayment" fxLayout="column">
+
+    <div fxLayout="row">
+        <div id="pricing" fxFlex="30">
+            <h2 class="mat-h2">Pricing</h2>
+            <table class="simple invoice-table">
+                <tbody>
+                    <tr *ngFor="let invoiceLine of invoiceLines">
+                        <td>
+                            <div class="title">
+                                <mat-icon matListIcon>{{invoiceLine.icon}}</mat-icon>
+                                {{invoiceLine.title}}
+                            </div>
+                        </td>
+                        <td class="text-right">
+                            {{invoiceLine.price | currency:'EUR':'symbol'}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="no-border">
+                            <div class="title">
+                                <mat-icon matListIcon>attach_money</mat-icon>
+                                TOTAL
+                            </div>
+                        </td>
+                        <td class="text-right no-border">
+                            <b>{{totalAmount | currency:'EUR':'symbol'}}</b>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div fxFlex="5"></div>
+
+        <div id="paymentDetails" fxFlex>
+            <h2 class="mat-h2">Payment Details</h2>
+            <mat-accordion>
+                <!-- Credit card panel -->
+                <mat-expansion-panel [expanded]="true" (opened)="true" hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-radio-button checked>
+                            <mat-panel-title>
+                                Credit card
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                Secured
+                            </mat-panel-description>
+                        </mat-radio-button>
+                    </mat-expansion-panel-header>
+                    <div id="creditCardPanelContent">
+                        <div fxLayout="row" fxLayoutGap="20px">
+                            <mat-form-field fxFlex>
+                                <input type="text" matInput placeholder="Credit card number"
+                                    formControlName="creditCardNumber">
+                                <mat-icon matSuffix>credit_card</mat-icon>
+                            </mat-form-field>
+                            <mat-form-field fxFlex="15">
+                                <input type="number" matInput placeholder="CVC" formControlName="creditCardSecret">
+                                <mat-icon matSuffix>lock</mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="row" fxLayoutGap="20px">
+                            <mat-form-field fxFlex>
+                                <input type="number" matInput placeholder="Month"
+                                    formControlName="creditCardExpirationMonth">
+                            </mat-form-field>
+                            <mat-form-field fxFlex>
+                                <input type="number" matInput placeholder="Year"
+                                    formControlName="creditCardExpirationYear">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+
+                <!-- Paypal card panel -->
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-radio-button>
+                            <mat-panel-title>
+                                Paypal
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                Not yet available
+                            </mat-panel-description>
+                        </mat-radio-button>
+
+                    </mat-expansion-panel-header>
+                    <div id="paypalPanelContent">
+
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+
+        </div>
+    </div>
+</form>

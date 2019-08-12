@@ -1,0 +1,50 @@
+<form [formGroup]="formContact" fxLayout="column">
+
+    <div id="domicile">
+        <h2 class="mat-h2">Domicile</h2>
+
+        <div fxLayout="row" fxLayoutGap="20px">
+            <mat-form-field fxFlex>
+                <input type="text" matInput placeholder="First Name" formControlName="firstName">
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+                <input type="text" matInput placeholder="Last Name" formControlName="lastName">
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="20px">
+            <mat-form-field fxFlex="10">
+                <input type="string" matInput placeholder="N" formControlName="addressNumber">
+            </mat-form-field>
+            <mat-form-field fxFlex="90">
+                <input type="string" matInput placeholder="Address" formControlName="address">
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="20px">
+            <mat-form-field fxFlex="20">
+                <input type="string" matInput placeholder="Zip code" formControlName="zipcode">
+            </mat-form-field>
+            <mat-form-field fxFlex>
+                <input type="string" matInput placeholder="City" formControlName="city">
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div id="contact">
+        <h2 class="mat-h2">Contact</h2>
+
+        <div fxLayout="row" fxLayoutGap="20px">
+            <mat-form-field fxFlex>
+                <span matPrefix>+33 &nbsp;</span>
+                <input type="tel" matInput placeholder="Phone number" formControlName="phone">
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutGap="20px">
+            <mat-form-field fxFlex>
+                <input type="email" matInput placeholder="Email" formControlName="email">
+            </mat-form-field>
+        </div>
+    </div>
+</form>

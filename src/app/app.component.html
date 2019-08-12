@@ -1,0 +1,24 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+        ...
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <!-- Display only if is authenticated -->
+        <div *ngIf="currentUser">
+            <app-header title="{{title}}"></app-header>
+        </div>
+
+        <!-- Pages -->
+        <div [@slideInAnimation]="o.isActivated ? o.activatedRoute : ''">
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <div fxLayout="column" fxLayoutAlign="center center" style="height: 80vh; width: 66vw">
+                    <router-outlet #o="outlet"></router-outlet>
+                </div>
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,20 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+    <mat-toolbar-row>
+            <mat-icon class="icon" (click)="toggleSidenav()">layers</mat-icon>
+        <button routerLink="/" routerLinkActive="active" mat-button>
+            
+            <span>{{title}}</span>
+        </button>
+        <span class="space"></span>
+        <button routerLink="candidature" routerLinkActive="active" mat-button>Candidature</button>
+        <span class="space"></span>
+        <button routerLink="page1" routerLinkActive="active" mat-button>Page 1</button>
+        <span class="space"></span>
+        <button routerLink="page2" routerLinkActive="active" mat-button>Page 2</button>
+        <span class="space"></span>
+        <button (click)="logout()" routerLinkActive="active" mat-button>
+            <mat-icon class="icon">lock</mat-icon>
+            <span>Logout</span>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>

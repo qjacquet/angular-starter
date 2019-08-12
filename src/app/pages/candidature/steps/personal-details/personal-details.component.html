@@ -1,0 +1,67 @@
+<form [formGroup]="formPersonalDetails" fxLayout="column">
+
+    <div id="actual-situation">
+        <h2 class="mat-h2">Actual situation</h2>
+
+        <div fxLayout="row" fxLayoutGap="20px">
+            <mat-form-field fxFlex>
+                <input type="text" matInput placeholder="First Name" formControlName="firstName">
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+                <input type="text" matInput placeholder="Last Name" formControlName="lastName">
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="20px">
+            <mat-form-field fxFlex>
+                <mat-label>Nationality</mat-label>
+                <mat-select formControlName="nationality">
+                    <mat-option *ngFor="let country of countries" [value]="country.value">
+                        {{country.nationality}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+    </div>
+
+    <div id="birth">
+        <h2 class="mat-h2">Birth</h2>
+
+        <div fxLayout="row" fxLayoutGap="20px">
+            <mat-form-field fxFlex>
+                <input matInput [matDatepicker]="birthDatePicker" placeholder="Birth date" formControlName="birthDate"
+                    (dateChange)="onBirthdayDateChange($event.value)">
+                <mat-datepicker-toggle matSuffix [for]="birthDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #birthDatePicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="20px">
+            <mat-form-field fxFlex>
+                <mat-label>Birth country</mat-label>
+                <mat-select formControlName="birthCountry">
+                    <mat-option *ngFor="let country of countries" [value]="country.value">
+                        {{country.country}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+                <input type="text" matInput placeholder="Birth City" formControlName="birthCity">
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div id="not-adult-content" *ngIf="requireParentAuthorization">
+        <h2 class="mat-h2">Autorisation parentale</h2>
+
+        <p>
+            Parental Auth
+        </p>
+
+        <mat-checkbox formControlName="acceptParentAuthorization">Je déclare sur l'honneur que blablabla...
+        </mat-checkbox>
+    </div>
+</form>
