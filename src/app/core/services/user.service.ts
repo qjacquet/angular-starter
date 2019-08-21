@@ -3,10 +3,15 @@ import { HttpClient } from '@angular/common/http';
 
 import { User } from '../models/user';
 import { environment } from 'src/environments/environment';
+import { AuthenticationService } from './authentication.service';
+import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-    constructor(private http: HttpClient) { }
+    constructor(
+        private http: HttpClient,
+        private authenticationService: AuthenticationService
+    ) { }
 
     getAll() {
         return this.http.get<User[]>(`${environment.apiUrl}/users`);
@@ -21,6 +26,9 @@ export class UserService {
     }
 
     update(user: User) {
-        return this.http.put(`${environment.apiUrl}/users/${user.id}`, user);
+        return this.http.put(`${environment.apiUrl}/users/${user.id}`, user)
+        .pipe(map(u => {
+            this.authenticationService.setCurrentUser(user);
+        }));
     }
 }

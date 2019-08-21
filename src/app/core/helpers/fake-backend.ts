@@ -3,7 +3,7 @@ import {
     dematerialize,
     materialize,
     mergeMap
-    } from 'rxjs/operators';
+} from 'rxjs/operators';
 import {
     HTTP_INTERCEPTORS,
     HttpEvent,
@@ -11,7 +11,7 @@ import {
     HttpInterceptor,
     HttpRequest,
     HttpResponse
-    } from '@angular/common/http';
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { User } from '../models/user';
@@ -53,21 +53,20 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
         function authenticate() {
             const { email, password } = body;
-            const user = users.find(x => x.email.toUpperCase() === email.toUpperCase() && x.password === password);
+            const user = users.find(x => x.email.toUpperCase() === email.toUpperCase() && x.password === password) as User;
             if (!user) {
                 return error('Email or password is incorrect');
             }
-            return ok({
-                id: user.id,
-                email: user.email,
-                firstName: user.firstName,
-                lastName: user.lastName,
-                token: 'fake-jwt-token'
-            });
+
+            user.token = 'fake-jwt-token';
+
+            return ok(user);
         }
 
         function register() {
             const user = body;
+
+            console.log(body);
 
             if (users.find(x => x.email.toUpperCase() === user.email.toUpperCase())) {
                 return error('Email "' + user.email + '" is already used');
@@ -98,25 +97,20 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
 
         function update() {
-            const newUserData = body as User;
-            let user = new User();
+            if (!isLoggedIn()) {
+                return unauthorized();
+            }
 
-            // Get the user to update
-            user = users.filter(x => x.email.toUpperCase() === user.email.toUpperCase())[0];
+            const user = body;
 
-            // Set the new data with the current user id
-            newUserData.id = user.id;
+            users = users.filter(x => x.id !== idFromUrl());
 
-            // 'Remove' the user to update
-            users = users.filter(x => x.email.toUpperCase() !== user.email.toUpperCase());
-
-            // 'Add' the user to update
-            users.push(newUserData);
+            users.push(user);
 
             // Replace the user collection
             localStorage.setItem('users', JSON.stringify(users));
 
-            return ok();
+            return ok(user);
         }
 
         // helper functions

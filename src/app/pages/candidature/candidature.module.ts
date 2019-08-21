@@ -5,10 +5,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../../core/shared/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CandidatureComponent } from './candidature.component';
-import { DisclaimerComponent } from './steps/disclaimer/disclaimer.component';
-import { PersonalDetailsComponent } from './steps/personal-details/personal-details.component';
-import { ContactComponent } from './steps/contact/contact.component';
-import { PaymentComponent } from './steps/payment/payment.component';
+import { DisclaimerComponent } from './stepper/steps/disclaimer/disclaimer.component';
+import { PersonalDetailsComponent } from './stepper/steps/personal-details/personal-details.component';
+import { ContactComponent } from './stepper/steps/contact/contact.component';
+import { PaymentComponent } from './stepper/steps/payment/payment.component';
+import { FormService } from 'src/app/core/services/form.service';
+import { StepperComponent } from './stepper/stepper.component';
+import { FormStepperService } from 'src/app/ui/mat-stepper/form-stepper.service';
 
 const routes: Routes = [
   {
@@ -23,7 +26,8 @@ const routes: Routes = [
     DisclaimerComponent,
     PersonalDetailsComponent,
     ContactComponent,
-    PaymentComponent],
+    PaymentComponent,
+    StepperComponent],
   imports: [
     RouterModule.forChild(routes),
 
@@ -32,6 +36,10 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule
+  ],
+  providers: [
+    FormService,
+    FormStepperService
   ]
 })
 export class CandidatureModule { }

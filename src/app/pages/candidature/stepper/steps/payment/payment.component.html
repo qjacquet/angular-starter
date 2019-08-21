@@ -37,7 +37,7 @@
             <h2 class="mat-h2">Payment Details</h2>
             <mat-accordion>
                 <!-- Credit card panel -->
-                <mat-expansion-panel [expanded]="true" (opened)="true" hideToggle>
+                <mat-expansion-panel expanded hideToggle>
                     <mat-expansion-panel-header>
                         <mat-radio-button checked>
                             <mat-panel-title>
@@ -74,9 +74,9 @@
                 </mat-expansion-panel>
 
                 <!-- Paypal card panel -->
-                <mat-expansion-panel hideToggle>
+                <mat-expansion-panel hideToggle disabled>
                     <mat-expansion-panel-header>
-                        <mat-radio-button>
+                        <mat-radio-button disabled>
                             <mat-panel-title>
                                 Paypal
                             </mat-panel-title>

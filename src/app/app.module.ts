@@ -22,6 +22,7 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { SidenavService } from './ui/sidenav/sidenav.service';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { FormService } from './core/services/form.service';
+import { FormStepperService } from './ui/mat-stepper/form-stepper.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { FormService } from './core/services/form.service';
     DialogService,
     AlertService,
     SidenavService,
-    FormService
+    FormService,
+    FormStepperService
   ],
   entryComponents: [
     DialogComponent

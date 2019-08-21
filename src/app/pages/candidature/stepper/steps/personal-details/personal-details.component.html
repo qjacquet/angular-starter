@@ -17,7 +17,7 @@
             <mat-form-field fxFlex>
                 <mat-label>Nationality</mat-label>
                 <mat-select formControlName="nationality">
-                    <mat-option *ngFor="let country of countries" [value]="country.value">
+                    <mat-option *ngFor="let country of countries" [value]="country.nationality">
                         {{country.nationality}}
                     </mat-option>
                 </mat-select>
@@ -42,7 +42,7 @@
             <mat-form-field fxFlex>
                 <mat-label>Birth country</mat-label>
                 <mat-select formControlName="birthCountry">
-                    <mat-option *ngFor="let country of countries" [value]="country.value">
+                    <mat-option *ngFor="let country of countries" [value]="country.country">
                         {{country.country}}
                     </mat-option>
                 </mat-select>
@@ -58,7 +58,7 @@
         <h2 class="mat-h2">Autorisation parentale</h2>
 
         <p>
-            Parental Auth
+            ...
         </p>
 
         <mat-checkbox formControlName="acceptParentAuthorization">Je déclare sur l'honneur que blablabla...

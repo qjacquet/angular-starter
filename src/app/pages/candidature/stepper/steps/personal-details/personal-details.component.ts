@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { DateUtils } from '../../../../core/helpers/utils';
+import { DateUtils } from '../../../../../core/helpers/utils';
 import { User } from 'src/app/core/models/user';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
+import { FormService } from 'src/app/core/services/form.service';
 import locales from 'src/app/core/shared/locales-data';
 
 export interface Country {
@@ -26,30 +27,35 @@ export class PersonalDetailsComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private formService: FormService
   ) {
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    this.currentUser = this.authenticationService.currentUserValue;
+
+    const profile = this.currentUser.profile;
+    const personalDetails = profile ? profile.personalDetails : null;
 
     this.formPersonalDetails = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      nationality: ['', Validators.required],
-      birthDate: ['', Validators.required],
-      birthCountry: ['', Validators.required],
-      birthCity: ['', Validators.required],
+      firstName:    [profile.firstName, Validators.required],
+      lastName:     [profile.lastName, Validators.required],
+      nationality:  [personalDetails ? personalDetails.nationality : null, Validators.required],
+      birthDate:    [personalDetails ? personalDetails.birthDate : null, Validators.required],
+      birthCountry: [personalDetails ? personalDetails.birthCountry : null, Validators.required],
+      birthCity:    [personalDetails ? personalDetails.birthCity : null, Validators.required],
       acceptParentAuthorization: ['', null]
     });
   }
 
-  @Input() candidatureForm: FormGroup;
-
   ngOnInit() {
-    this.formPersonalDetails.get('firstName').setValue(this.currentUser.firstName);
-    this.formPersonalDetails.get('lastName').setValue(this.currentUser.lastName);
+    this.parentAuthorizationDisplay(this.formPersonalDetails.get('birthDate').value);
   }
 
   onBirthdayDateChange(input: string) {
-    if (DateUtils.isDateOverBack18Years(new Date(input))) {
+    this.parentAuthorizationDisplay(input);
+  }
+
+  parentAuthorizationDisplay(date: any) {
+    if (DateUtils.isDateOverBack18Years(new Date(date))) {
       this.requireParentAuthorization = true;
       this.formPersonalDetails.get('acceptParentAuthorization').setValidators([Validators.requiredTrue]);
     } else {
@@ -58,4 +64,6 @@ export class PersonalDetailsComponent implements OnInit {
     }
     this.formPersonalDetails.get('acceptParentAuthorization').updateValueAndValidity();
   }
+
+
 }

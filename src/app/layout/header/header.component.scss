@@ -1,4 +1,7 @@
 mat-toolbar {
+    // margin-bottom: 25px;
+    position: fixed;
+    z-index: 2;
 
     mat-toolbar-row {
         .icon {

@@ -1,11 +1,12 @@
 import { AlertService } from '../../../core/services/alert.service';
 import { AuthenticationService } from '../../../core/services/authentication.service';
 import { Component, OnInit } from '@angular/core';
-import { DialogService } from '../../../core/services/dialog.service';
 import { first } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../../core/services/user.service';
+import { FormService } from '../../../core/services/form.service';
+import { User } from 'src/app/core/models/user';
 
 @Component({
     selector: 'app-register',
@@ -22,8 +23,8 @@ export class RegisterComponent implements OnInit {
         private router: Router,
         private authenticationService: AuthenticationService,
         private userService: UserService,
-        private dialogService: DialogService,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private formService: FormService
     ) {
         // redirect to home if already logged in
         if (this.authenticationService.currentUserValue) {
@@ -33,8 +34,9 @@ export class RegisterComponent implements OnInit {
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
-            firstName: ['', Validators.required],
-            lastName: ['', Validators.required],
+            name: ['', Validators.required],
+            firstName: ['', null],
+            lastName: ['', null],
             email: ['', Validators.required],
             password: ['', [Validators.required, Validators.minLength(6)]]
         });
@@ -52,7 +54,7 @@ export class RegisterComponent implements OnInit {
         }
 
         this.loading = true;
-        this.userService.register(this.registerForm.value)
+        this.userService.register(this.getFormUser())
             .pipe(first())
             .subscribe(
                 data => {
@@ -63,5 +65,23 @@ export class RegisterComponent implements OnInit {
                     this.alertService.show(error);
                     this.loading = false;
                 });
+    }
+
+    getFormUser() {
+        const name = this.registerForm.get('name').value.split(' ', 2);
+
+        return new User({
+            email: this.registerForm.get('email').value,
+            password: this.registerForm.get('password').value,
+            profile: {
+                firstName: name[0],
+                lastName: name[1],
+                contact: {
+                    firstName: name[0],
+                    lastName: name[1],
+                    email: this.registerForm.get('email').value
+                }
+            }
+        }) as User;
     }
 }

@@ -1,64 +1,12 @@
-<mat-card>
-    <mat-card-title>Stepper</mat-card-title>
-    <mat-divider></mat-divider>
+<app-candidature-stepper *ngIf="canShowForm"></app-candidature-stepper>
+
+<mat-card *ngIf="!canShowForm">
+    <mat-card-title>Candidature en cours</mat-card-title>
+    <mat-card-subtitle>&nbsp;</mat-card-subtitle>
     <mat-card-content>
-        <mat-horizontal-stepper #stepper linear>
-            <!-- Disclaimer -->
-            <mat-step [stepControl]="formDisclaimer">
-                <ng-template matStepLabel>Disclaimer</ng-template>
-                <app-candidature-step-disclaimer></app-candidature-step-disclaimer>
-            </mat-step>
-
-            <!-- Personal details -->
-            <mat-step [stepControl]="formPersonalDetails">
-                <ng-template matStepLabel>Personal details</ng-template>
-                <app-candidature-step-personal-details></app-candidature-step-personal-details>
-            </mat-step>
-
-            <!-- Contact details -->
-            <mat-step [stepControl]="formContact">
-                <ng-template matStepLabel>Contact</ng-template>
-                <app-candidature-step-contact></app-candidature-step-contact>
-            </mat-step>
-
-            <!-- Payment details -->
-            <mat-step [stepControl]="formPayment">
-                <ng-template matStepLabel>Payment</ng-template>
-                <app-candidature-step-payment></app-candidature-step-payment>
-            </mat-step>
-
-            <!-- Confirm -->
-            <mat-step>
-                <ng-template matStepLabel>Confirmation</ng-template>
-                <div fxLayout="column">
-
-                    <h2 class="mat-h2">Confirmation</h2>
-                    <p>
-                        {{formPersonalDetails.get('firstName').value}} {{formPersonalDetails.get('lastName').value}},
-                        {{formPersonalDetails.get('nationality').value}} <br>
-                        Birth the {{formPersonalDetails.get('birthDate').value | date:'shortDate' }} at
-                        {{formPersonalDetails.get('birthCity').value}} in
-                        {{formPersonalDetails.get('birthCountry').value}} <br>
-                        <br>
-                        Reside at <br>
-                        {{formContact.get('addressNumber').value}} {{formContact.get('address').value}} <br>
-                        {{formContact.get('zipcode').value}} {{formContact.get('city').value}} <br>
-                        <br>
-                        Contact <br>
-                        +33 {{formContact.get('phone').value}} <br>
-                        {{formContact.get('email').value}} <br>
-                        <br>
-                        Accept to pay the total amount of {{paymentStep.totalAmount | currency:'EUR':'symbol'}} by
-                        credit card. <br>
-                    </p>
-                </div>
-            </mat-step>
-        </mat-horizontal-stepper>
+        <p>
+            Votre candidature est en cours de traitement...
+        </p>
     </mat-card-content>
-    <mat-card-actions align="end">
-        <button type="button" mat-raised-button (click)="goBack(stepper)" *ngIf="stepper.selectedIndex !== 0">Back</button>
-        <button type="button" mat-raised-button color="primary" (click)="goForward(stepper)" *ngIf="stepper.selectedIndex !== (stepper.steps?.length -1)">Next</button>
-        <button type="button" mat-raised-button color="primary" (click)="submit()" *ngIf="stepper.selectedIndex === (stepper.steps?.length -1)">Submit</button>
-    </mat-card-actions>
     <mat-card-footer></mat-card-footer>
 </mat-card>

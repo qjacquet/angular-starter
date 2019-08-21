@@ -24,19 +24,21 @@ export class AuthenticationService {
         return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, { email, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                this.currentUserSubject.next(user);
+                this.setCurrentUser(user);
                 return user;
             }));
     }
 
     logout() {
-        // remove user from local storage and set current user to null
-        localStorage.removeItem('currentUser');
-        this.currentUserSubject.next(null);
+        this.setCurrentUser(null);
     }
 
     isLogged() {
         return (localStorage.getItem('currentUser') !== undefined);
+    }
+
+    setCurrentUser(user: User) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.currentUserSubject.next(user);
     }
 }
