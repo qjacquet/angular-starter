@@ -5,7 +5,7 @@ import { User } from './core/models/user';
 import { MatSnackBar, MatDialog, MatDialogConfig, MatSidenav } from '@angular/material';
 import { SidenavService } from './ui/sidenav/sidenav.service';
 import { RouterOutlet } from '@angular/router';
-import { slideInAnimation, fadeAnimation } from './ui/animations';
+import { animations } from './ui/animations';
 import { SwUpdate, SwPush } from '@angular/service-worker';
 import { DialogService } from './core/services/dialog.service';
 import { NGXLogger } from 'ngx-logger';
@@ -16,7 +16,7 @@ import localeFr from '@angular/common/locales/fr';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  animations: [slideInAnimation]
+  animations
 })
 export class AppComponent implements OnInit {
 
