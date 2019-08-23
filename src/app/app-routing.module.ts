@@ -5,26 +5,31 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'auth',
-    loadChildren: './pages/authentication/authentication.module#AuthenticationModule'
+    loadChildren: './routes/authentication/authentication.module#AuthenticationModule'
   },
   {
     path: '',
-    loadChildren: './pages/home/home.module#HomeModule',
+    loadChildren: './routes/home/home.module#HomeModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'movies',
+    loadChildren: './routes/movies/movies.module#MoviesModule',
     canActivate: [AuthGuard]
   },
   {
     path: 'page1',
-    loadChildren: './pages/page1/page1.module#Page1Module',
+    loadChildren: './routes/page1/page1.module#Page1Module',
     canActivate: [AuthGuard]
   },
   {
     path: 'page2',
-    loadChildren: './pages/page2/page2.module#Page2Module',
+    loadChildren: './routes/page2/page2.module#Page2Module',
     canActivate: [AuthGuard]
   },
   {
     path: 'candidature',
-    loadChildren: './pages/candidature/candidature.module#CandidatureModule',
+    loadChildren: './routes/candidature/candidature.module#CandidatureModule',
     canActivate: [AuthGuard]
   },
   {

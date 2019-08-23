@@ -1,11 +1,11 @@
-import { AlertService } from '../../../core/services/alert.service';
-import { AuthenticationService } from '../../../core/services/authentication.service';
+import { AlertService } from '../../../../core/services/alert.service';
+import { AuthenticationService } from '../../../../core/services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../../../core/services/user.service';
-import { FormService } from '../../../core/services/form.service';
+import { UserService } from '../../../../core/services/user.service';
+import { FormService } from '../../../../core/services/form.service';
 import { User } from 'src/app/core/models/user';
 
 @Component({

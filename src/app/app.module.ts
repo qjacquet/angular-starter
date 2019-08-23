@@ -30,7 +30,7 @@ import { FormStepperService } from './ui/mat-stepper/form-stepper.service';
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    DialogComponent
+    DialogComponent,
   ],
   imports: [
     BrowserModule,

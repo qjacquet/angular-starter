@@ -4,5 +4,13 @@ export const environment = {
   production: true,
   apiUrl: 'localhost',
   logLevel: NgxLoggerLevel.OFF,
-  serverLogLevel: NgxLoggerLevel.ERROR
+  serverLogLevel: NgxLoggerLevel.ERROR,
+
+  api: {
+    movies: {
+      url: 'https://api.themoviedb.org/',
+      version: '3',
+      key: '',
+    }
+  }
 };

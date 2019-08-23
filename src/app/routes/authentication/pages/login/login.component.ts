@@ -1,8 +1,8 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlertService } from '../../../core/services/alert.service';
-import { AuthenticationService } from '../../../core/services/authentication.service';
+import { AlertService } from '../../../../core/services/alert.service';
+import { AuthenticationService } from '../../../../core/services/authentication.service';
 import { Component, OnInit } from '@angular/core';
-import { DialogService } from '../../../core/services/dialog.service';
+import { DialogService } from '../../../../core/services/dialog.service';
 import { first } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 

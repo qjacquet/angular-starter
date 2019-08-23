@@ -2,9 +2,9 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
 
 <div class="app-container">
-    <mat-sidenav-container>
-        <mat-sidenav #sidenav mode="side" fxLayout="column">
-            ...
+    <mat-sidenav-container [hasBackdrop]="false">
+        <mat-sidenav #sidenav mode="side" [opened]="currentUser" fxLayout="column">
+            <app-sidebar></app-sidebar>
         </mat-sidenav>
         <mat-sidenav-content fxLayout="column">
 
