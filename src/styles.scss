@@ -1,1 +1,6 @@
+@import 'app/core/scss/core.scss';
+
+// Theme
+@include mat-core();
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "app/app.theme";

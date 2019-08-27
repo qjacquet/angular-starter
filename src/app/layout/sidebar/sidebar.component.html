@@ -1,1 +1,29 @@
-<p>sidebar works!</p>
+<div class="navbar">
+    <div class="navbar-top">
+
+        <div class="logo">
+            <img class="logo-icon" src="../../../assets/icons/icon-72x72.png">
+            <span class="logo-text">Angular Starter</span>
+        </div>
+
+        <div class="buttons">
+
+            <button mat-icon-button class="toggle-sidebar-folded" fxHide.lt-lg (click)="hide()">
+                <mat-icon class="secondary-text">menu</mat-icon>
+            </button>
+        </div>
+
+    </div>
+
+    <mat-list class="content">
+        <div class="nav">
+            <ng-container *ngFor="let item of items">
+
+                <nav-group *ngIf="item.type=='group'" [item]="item"></nav-group>
+                <nav-collapsable *ngIf="item.type=='collapsable'" [item]="item"></nav-collapsable>
+                <nav-item *ngIf="item.type=='item'" [item]="item"></nav-item>
+
+            </ng-container>
+        </div>
+    </mat-list>
+</div>

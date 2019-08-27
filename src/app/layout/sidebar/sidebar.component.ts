@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { navigation, Navigation } from '../../navigation';
+import { SidenavService } from '../../ui/sidenav/sidenav.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  items: Navigation[];
+
+  constructor(
+    private sideNavService: SidenavService
+  ) {
+    console.log(navigation);
+    this.items = navigation;
+  }
 
   ngOnInit() {
+    console.log(navigation);
+    this.items = navigation;
+  }
+
+  hide() {
+    this.sideNavService.close();
   }
 
 }

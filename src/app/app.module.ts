@@ -18,19 +18,19 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { MaterialModule } from './core/shared/material.module';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { SidenavService } from './ui/sidenav/sidenav.service';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { FormService } from './core/services/form.service';
 import { FormStepperService } from './ui/mat-stepper/form-stepper.service';
+import { DirectivesModule } from './core/directives';
+import { SidebarModule } from './layout/sidebar/sidebar.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    SidebarComponent,
-    DialogComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +45,9 @@ import { FormStepperService } from './ui/mat-stepper/form-stepper.service';
       level: environment.logLevel,
       serverLogLevel: environment.serverLogLevel,
       disableConsoleLogging: false
-    })
+    }),
+    DirectivesModule,
+    SidebarModule
   ],
   providers: [
     AuthenticationService,

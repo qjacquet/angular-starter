@@ -1,6 +1,10 @@
 <mat-toolbar color="primary" class="mat-elevation-z6">
     <mat-toolbar-row>
-        <mat-icon class="icon" (click)="toggleSidenav()">my_location</mat-icon>
+        <button mat-icon-button class="toggle-sidebar-folded" fxHide.lt-lg 
+            *ngIf="!isOpenSidenav()"
+            (click)="showSidenav()">
+            <mat-icon class="secondary-text">menu</mat-icon>
+        </button>
         <button routerLink="/" routerLinkActive="active" mat-button>
             <span>{{title}}</span>
         </button>

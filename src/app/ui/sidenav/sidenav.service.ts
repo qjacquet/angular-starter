@@ -20,4 +20,8 @@ export class SidenavService {
     toggle() {
         this.sidenav.toggle();
     }
+
+    isOpen() {
+        return this.sidenav.opened;
+    }
 }

@@ -36,4 +36,12 @@ export class HeaderComponent implements OnInit {
     this.sidenav.toggle();
   }
 
+  isOpenSidenav() {
+    return this.sidenav.isOpen();
+  }
+
+  showSidenav() {
+    this.sidenav.open();
+  }
+
 }

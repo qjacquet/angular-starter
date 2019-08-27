@@ -2,7 +2,7 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
 
 <div class="app-container">
-    <mat-sidenav-container [hasBackdrop]="false">
+    <mat-sidenav-container [hasBackdrop]="false" fullscreen>
         <mat-sidenav #sidenav mode="side" [opened]="currentUser" fxLayout="column">
             <app-sidebar></app-sidebar>
         </mat-sidenav>
@@ -24,3 +24,22 @@
         </mat-sidenav-content>
     </mat-sidenav-container>
 </div>
+
+<!-- <div class="app-container">
+                <app-sidebar name="main">
+                        <div>content here</div>
+                    </app-sidebar>
+
+                        Display only if is authenticated
+                        <div *ngIf="currentUser">
+                                <app-header title="{{title}}"></app-header>
+                            </div>
+                
+                
+                            Pages
+                            <div class="app-body">
+                                <div [@routerTransitionRight]="o.isActivated ? o.activatedRoute : ''">
+                                    <router-outlet #o="outlet"></router-outlet>
+                                </div>
+                            </div>
+</div> -->
