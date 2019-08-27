@@ -13,7 +13,7 @@ import { CdkStep, StepperSelectionEvent } from '@angular/cdk/stepper';
 import { first } from 'rxjs/operators';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormStepperService } from 'src/app/ui/mat-stepper/form-stepper.service';
+import { FormStepperService } from 'src/app/core/ui/mat-stepper/form-stepper.service';
 
 const selector = 'app-candidature-stepper';
 

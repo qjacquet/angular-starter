@@ -11,7 +11,7 @@ import { ContactComponent } from './stepper/steps/contact/contact.component';
 import { PaymentComponent } from './stepper/steps/payment/payment.component';
 import { FormService } from 'src/app/core/services/form.service';
 import { StepperComponent } from './stepper/stepper.component';
-import { FormStepperService } from 'src/app/ui/mat-stepper/form-stepper.service';
+import { FormStepperService } from 'src/app/core/ui/mat-stepper/form-stepper.service';
 
 const routes: Routes = [
   {

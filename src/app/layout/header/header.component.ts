@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../../core/services/authentication.service';
 import { User } from '../../core/models/user';
-import { SidenavService } from '../../ui/sidenav/sidenav.service';
+import { SidenavService } from '../../core/ui/sidenav/sidenav.service';
 
 
 

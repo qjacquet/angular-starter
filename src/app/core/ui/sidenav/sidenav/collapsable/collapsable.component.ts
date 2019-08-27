@@ -3,17 +3,16 @@ import { NavigationEnd, Router } from '@angular/router';
 import { merge, Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
-import { animations } from '../../../ui/animations';
-import { NavigationItem } from '../../../navigation';
+import { animations } from '../../../../shared/animations';
+import { NavigationItem } from '../../../../config/navigation';
 
 @Component({
-    selector   : 'nav-collapsable',
+    selector: 'nav-collapsable',
     templateUrl: './collapsable.component.html',
-    styleUrls  : ['./collapsable.component.scss'],
+    styleUrls: ['./collapsable.component.scss'],
     animations
 })
-export class NavCollapsableComponent implements OnInit
-{
+export class NavCollapsableComponent implements OnInit {
     @Input()
     item: NavigationItem;
 
@@ -28,10 +27,9 @@ export class NavCollapsableComponent implements OnInit
 
 
     constructor(
-        private _changeDetectorRef: ChangeDetectorRef,
-        private _router: Router
-    )
-    {
+        private changeDetectorRef: ChangeDetectorRef,
+        private router: Router
+    ) {
 
     }
 
@@ -42,21 +40,21 @@ export class NavCollapsableComponent implements OnInit
     /**
      * On init
      */
-    ngOnInit(): void
-    {
-
-
+    ngOnInit(): void {
 
         // Check if the url can be found in
         // one of the children of this item
-        if ( this.isUrlInChildren(this.item, this._router.url) )
-        {
-            this.expand();
-        }
-        else
-        {
-            this.collapse();
-        }
+        this.router.events
+            .pipe(
+                filter(e => e instanceof NavigationEnd)
+            )
+            .subscribe((navEnd: NavigationEnd) => {
+                if (this.isUrlInChildren(this.item, this.router.url)) {
+                    this.expand();
+                } else {
+                    this.collapse();
+                }
+            });
     }
 
 
@@ -69,8 +67,7 @@ export class NavCollapsableComponent implements OnInit
      *
      * @param ev
      */
-    toggleOpen(ev): void
-    {
+    toggleOpen(ev): void {
         ev.preventDefault();
 
         this.isOpen = !this.isOpen;
@@ -79,33 +76,29 @@ export class NavCollapsableComponent implements OnInit
     /**
      * Expand the collapsable navigation
      */
-    expand(): void
-    {
-        if ( this.isOpen )
-        {
+    expand(): void {
+        if (this.isOpen) {
             return;
         }
 
         this.isOpen = true;
 
         // Mark for check
-        this._changeDetectorRef.markForCheck();
+        this.changeDetectorRef.markForCheck();
     }
 
     /**
      * Collapse the collapsable navigation
      */
-    collapse(): void
-    {
-        if ( !this.isOpen )
-        {
+    collapse(): void {
+        if (!this.isOpen) {
             return;
         }
 
         this.isOpen = false;
 
         // Mark for check
-        this._changeDetectorRef.markForCheck();
+        this.changeDetectorRef.markForCheck();
     }
 
     /**
@@ -116,26 +109,20 @@ export class NavCollapsableComponent implements OnInit
      * @param item
      * @returns {boolean}
      */
-    isChildrenOf(parent, item): boolean
-    {
+    isChildrenOf(parent, item): boolean {
         const children = parent.children;
 
-        if ( !children )
-        {
+        if (!children) {
             return false;
         }
 
-        if ( children.indexOf(item) > -1 )
-        {
+        if (children.indexOf(item) > -1) {
             return true;
         }
 
-        for ( const child of children )
-        {
-            if ( child.children )
-            {
-                if ( this.isChildrenOf(child, item) )
-                {
+        for (const child of children) {
+            if (child.children) {
+                if (this.isChildrenOf(child, item)) {
                     return true;
                 }
             }
@@ -152,27 +139,21 @@ export class NavCollapsableComponent implements OnInit
      * @param url
      * @returns {boolean}
      */
-    isUrlInChildren(parent, url): boolean
-    {
+    isUrlInChildren(parent, url): boolean {
         const children = parent.children;
 
-        if ( !children )
-        {
+        if (!children) {
             return false;
         }
 
-        for ( const child of children )
-        {
-            if ( child.children )
-            {
-                if ( this.isUrlInChildren(child, url) )
-                {
+        for (const child of children) {
+            if (child.children) {
+                if (this.isUrlInChildren(child, url)) {
                     return true;
                 }
             }
 
-            if ( child.url === url || url.includes(child.url) )
-            {
+            if (child.url === url || url.includes(child.url)) {
                 return true;
             }
         }

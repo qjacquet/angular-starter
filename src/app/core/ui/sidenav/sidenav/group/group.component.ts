@@ -2,21 +2,20 @@ import { ChangeDetectorRef, Component, HostBinding, Input, OnDestroy, OnInit } f
 import { merge, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { NavigationItem } from '../../../navigation';
+import { NavigationItem } from '../../../../config/navigation';
 
 @Component({
-    selector: 'nav-item',
-    templateUrl: './item.component.html',
-    styleUrls: ['./item.component.scss']
+    selector   : 'nav-group',
+    templateUrl: './group.component.html',
+    styleUrls  : ['./group.component.scss']
 })
-export class NavItemComponent implements OnInit {
+export class NavGroupComponent implements OnInit
+{
     @HostBinding('class')
-    classes = 'nav-item';
+    classes = 'nav-group nav-item';
 
     @Input()
     item: NavigationItem;
-
-
     unsubscribeAll: Subject<any>;
 
     constructor(

@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationService } from './core/services/authentication.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { DialogComponent } from './ui/dialog/dialog.component';
+import { DialogComponent } from './core/ui/dialog/dialog.component';
 import { DialogService } from './core/services/dialog.service';
 import { environment } from '../environments/environment';
 import { ErrorInterceptor } from './core/helpers/error.interceptor';
@@ -18,12 +18,12 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { MaterialModule } from './core/shared/material.module';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { SidenavService } from './ui/sidenav/sidenav.service';
+import { SidenavService } from './core/ui/sidenav/sidenav.service';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { FormService } from './core/services/form.service';
-import { FormStepperService } from './ui/mat-stepper/form-stepper.service';
+import { FormStepperService } from './core/ui/mat-stepper/form-stepper.service';
 import { DirectivesModule } from './core/directives';
-import { SidebarModule } from './layout/sidebar/sidebar.module';
+import { SidenavModule } from './core/ui/sidenav/sidenav.module';
 
 @NgModule({
   declarations: [
@@ -47,7 +47,7 @@ import { SidebarModule } from './layout/sidebar/sidebar.module';
       disableConsoleLogging: false
     }),
     DirectivesModule,
-    SidebarModule
+    SidenavModule
   ],
   providers: [
     AuthenticationService,
@@ -64,7 +64,7 @@ import { SidebarModule } from './layout/sidebar/sidebar.module';
     AlertService,
     SidenavService,
     FormService,
-    FormStepperService
+    FormStepperService,
   ],
   entryComponents: [
     DialogComponent

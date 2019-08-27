@@ -3,9 +3,9 @@ import { Router, NavigationEnd } from '@angular/router';
 import { AuthenticationService } from './core/services/authentication.service';
 import { User } from './core/models/user';
 import { MatSnackBar, MatDialog, MatDialogConfig, MatSidenav } from '@angular/material';
-import { SidenavService } from './ui/sidenav/sidenav.service';
+import { SidenavService } from './core/ui/sidenav/sidenav.service';
 import { RouterOutlet } from '@angular/router';
-import { animations } from './ui/animations';
+import { animations } from './core/shared/animations';
 import { SwUpdate, SwPush } from '@angular/service-worker';
 import { DialogService } from './core/services/dialog.service';
 import { NGXLogger } from 'ngx-logger';
@@ -13,6 +13,7 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { SplashScreenService } from './core/ui/splash-screen/splash-screen.service';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +23,7 @@ import { Subject } from 'rxjs';
 })
 export class AppComponent implements OnInit {
 
-  private unsubscribeAll: Subject<any>;
+  unsubscribeAll: Subject<any>;
 
   @ViewChild('sidenav', null) public sidenav: MatSidenav;
 
@@ -37,7 +38,8 @@ export class AppComponent implements OnInit {
     private snackbar: MatSnackBar,
     private dialogService: DialogService,
     private logger: NGXLogger,
-    private sidenavService: SidenavService
+    private sidenavService: SidenavService,
+    private splashScreenService: SplashScreenService
   ) {
     // Set the private defaults
     this.unsubscribeAll = new Subject();
@@ -47,6 +49,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.splashScreenService.hide();
+
     registerLocaleData(localeFr);
 
     this.sidenavService.setSidenav(this.sidenav);
@@ -62,17 +66,6 @@ export class AppComponent implements OnInit {
           });
       });
     }
-
-    // Chargement sidebar
-    // this.router.events
-    // .pipe(
-    //     filter((event) => event instanceof NavigationEnd),
-    //     takeUntil(this.unsubscribeAll)
-    // )
-    // .subscribe(() => {
-    //   this.sideBarService.getSidebar('main').open();
-    //     }
-    // );
   }
 
   prepareRoute(outlet: RouterOutlet) {
