@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { navigation, Navigation } from '../../config/navigation';
 import { SidenavService } from './sidenav.service';
 import { User } from '../../models/user';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -15,8 +16,13 @@ export class SidenavComponent implements OnInit {
   @Input() title: string;
   @Input() currentUser: User;
 
+  // Theme
+  @Input() selectedTheme: string;
+  @Output() selectedThemeChange = new EventEmitter<string>();
+
   constructor(
-    private sideNavService: SidenavService
+    private sideNavService: SidenavService,
+    private themeService: ThemeService
   ) {
   }
 
@@ -26,6 +32,10 @@ export class SidenavComponent implements OnInit {
 
   hide() {
     this.sideNavService.close();
+  }
+
+  toggleDarkMode() {
+    this.themeService.setReverse();
   }
 
 }

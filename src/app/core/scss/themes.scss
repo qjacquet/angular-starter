@@ -1,0 +1,5 @@
+@import "../ui/sidenav/sidenav.theme.scss";
+
+@mixin core-theme($theme) {
+    @include sidenav-theme($theme);
+}

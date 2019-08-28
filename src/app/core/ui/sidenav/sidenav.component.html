@@ -7,7 +7,9 @@
         </div>
 
         <div class="buttons">
-
+            <button mat-icon-button (click)="toggleDarkMode()">
+                <mat-icon class="secondary-text">nights_stay</mat-icon>
+            </button>
             <button mat-icon-button class="toggle-sidebar-folded" (click)="hide()">
                 <mat-icon class="secondary-text">menu</mat-icon>
             </button>
@@ -15,7 +17,7 @@
 
     </div>
 
-    <mat-list class="content">
+    <mat-list class="navbar-content">
         <div class="nav">
             <ng-container *ngFor="let item of items">
 

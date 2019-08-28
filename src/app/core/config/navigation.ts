@@ -36,25 +36,13 @@ export const navigation: Navigation[] = [
                 type     : 'item',
                 icon     : 'email',
                 url      : '/page1',
-                badge    : {
-                    title    : '25',
-                    translate: 'NAV.SAMPLE.BADGE',
-                    bg       : '#F44336',
-                    fg       : '#FFFFFF'
-                }
             },
             {
                 id       : 'page2',
                 title    : 'Page 2',
                 type     : 'item',
                 icon     : 'email',
-                url      : '/page2',
-                badge    : {
-                    title    : '25',
-                    translate: 'NAV.SAMPLE.BADGE',
-                    bg       : '#F44336',
-                    fg       : '#FFFFFF'
-                }
+                url      : '/page2'
             }
         ]
     },

@@ -24,6 +24,7 @@ import { FormService } from './core/services/form.service';
 import { FormStepperService } from './core/ui/mat-stepper/form-stepper.service';
 import { DirectivesModule } from './core/directives';
 import { SidenavModule } from './core/ui/sidenav/sidenav.module';
+import { ThemeService } from './core/services/theme.service';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { SidenavModule } from './core/ui/sidenav/sidenav.module';
     SidenavService,
     FormService,
     FormStepperService,
+    ThemeService
   ],
   entryComponents: [
     DialogComponent
