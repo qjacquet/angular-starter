@@ -91,7 +91,7 @@ $typography: mat-typography-config(
 
 // Define the primary, accent and warn palettes
 $default-primary-palette: mat-palette($navy);
-$default-accent-palette: mat-palette($mat-light-blue, 600, 400, 700);
+$default-accent-palette: mat-palette($mat-indigo, 600, 400, 700);
 $default-warn-palette: mat-palette($mat-red);
 
 // Create the Material theme object
@@ -126,7 +126,7 @@ $theme: mat-light-theme($default-primary-palette, $default-accent-palette, $defa
 
 // Define the primary, accent and warn palettes
 $default-primary-palette: mat-palette($navy);
-$default-accent-palette: mat-palette($mat-light-blue, 600, 400, 700);
+$default-accent-palette: mat-palette($mat-indigo, 600, 400, 700);
 $default-warn-palette: mat-palette($mat-red);
 
 // Create the Material theme object

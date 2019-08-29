@@ -3,21 +3,31 @@
     $primary: map-get($theme, primary);
     $accent: map-get($theme, accent);
     $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
 
     .navbar {
-        background-color: mat-color($primary);
+        background: mat-color($primary);
     }
 
     .navbar-top {
         background: mat-color($primary);
     }
 
-    .navbar-content::-webkit-scrollbar-thumb {
-        background: mat-color($primary);
+    .navbar-content {
+        color: white;
+        
+        .user {
+            .avatar-container {
+                background: mat-color($primary);
+            }
+        }
     }
-    
-    /* Handle on hover */
-    .navbar-content::-webkit-scrollbar-thumb:hover {
+
+    .navbar-content::-webkit-scrollbar-thumb {
+        background: mat-color($accent);
+    }
+
+    .navbar-content:hover::-webkit-scrollbar-track {
         background: mat-color($primary);
     }
 }

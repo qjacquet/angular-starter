@@ -3,6 +3,7 @@ import { navigation, Navigation } from '../../config/navigation';
 import { SidenavService } from './sidenav.service';
 import { User } from '../../models/user';
 import { ThemeService } from '../../services/theme.service';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -12,9 +13,9 @@ import { ThemeService } from '../../services/theme.service';
 export class SidenavComponent implements OnInit {
 
   items: Navigation[];
+  currentUser: User;
 
   @Input() title: string;
-  @Input() currentUser: User;
 
   // Theme
   @Input() selectedTheme: string;
@@ -22,8 +23,10 @@ export class SidenavComponent implements OnInit {
 
   constructor(
     private sideNavService: SidenavService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private authenticationService: AuthenticationService,
   ) {
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
   ngOnInit() {
