@@ -38,7 +38,7 @@ export class ThemeService {
         this.themeClass = this.themeClassSubject.asObservable();
     }
 
-    private set(themeClass: string) {
+    set(themeClass: string) {
         this.save(themeClass);
         this.themeClassSubject.next(themeClass);
     }

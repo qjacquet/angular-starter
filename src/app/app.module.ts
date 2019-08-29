@@ -25,6 +25,7 @@ import { FormStepperService } from './core/ui/mat-stepper/form-stepper.service';
 import { DirectivesModule } from './core/directives';
 import { SidenavModule } from './core/ui/sidenav/sidenav.module';
 import { ThemeService } from './core/services/theme.service';
+import { MaterialColorPickerModule } from './core/ui/material-color-picker/material-color-picker.module';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ThemeService } from './core/services/theme.service';
       disableConsoleLogging: false
     }),
     DirectivesModule,
-    SidenavModule
+    SidenavModule,
+    MaterialColorPickerModule
   ],
   providers: [
     AuthenticationService,

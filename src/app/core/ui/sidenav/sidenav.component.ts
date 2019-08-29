@@ -4,6 +4,7 @@ import { SidenavService } from './sidenav.service';
 import { User } from '../../models/user';
 import { ThemeService } from '../../services/theme.service';
 import { AuthenticationService } from '../../services/authentication.service';
+import { DialogService } from '../../services/dialog.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -24,7 +25,7 @@ export class SidenavComponent implements OnInit {
   constructor(
     private sideNavService: SidenavService,
     private themeService: ThemeService,
-    private authenticationService: AuthenticationService,
+    private authenticationService: AuthenticationService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
@@ -39,6 +40,10 @@ export class SidenavComponent implements OnInit {
 
   toggleDarkMode() {
     this.themeService.setReverse();
+  }
+
+  setTheme(themeClass: string) {
+    this.themeService.set(themeClass);
   }
 
 }

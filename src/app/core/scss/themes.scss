@@ -1,5 +1,7 @@
 @import "../ui/sidenav/sidenav.theme.scss";
+@import "../ui/material-color-picker/material-color-picker.theme.scss";
 
 @mixin core-theme($theme) {
     @include sidenav-theme($theme);
+    @include material-color-picker-theme($theme)
 }

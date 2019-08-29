@@ -8,6 +8,7 @@ import { NavCollapsableComponent } from './sidenav/collapsable/collapsable.compo
 import { NavGroupComponent } from './sidenav/group/group.component';
 import { NavItemComponent } from './sidenav/item/item.component';
 import { RouterModule } from '@angular/router';
+import { MaterialColorPickerModule } from '../material-color-picker/material-color-picker.module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     MaterialModule,
     FlexLayoutModule,
-    RouterModule
+    RouterModule,
+    MaterialColorPickerModule
   ],
   exports: [SidenavComponent]
 })

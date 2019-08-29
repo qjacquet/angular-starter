@@ -7,9 +7,31 @@
         </div>
 
         <div class="buttons">
-            <button mat-icon-button (click)="toggleDarkMode()">
-                <mat-icon class="secondary-text">nights_stay</mat-icon>
+                <!-- <material-color-picker class="mb-16"
+                formControlName="primaryBackground"></material-color-picker> -->
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>palette</mat-icon>
             </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="setTheme('theme-default')">
+                    <span>Theme 1</span>
+                </button>
+                <button mat-menu-item (click)="setTheme('theme-yellow-light')"> 
+                    <span>Theme 2</span>
+                </button>
+                <button mat-menu-item (click)="setTheme('theme-blue-gray-dark')">
+                    <span>Theme 3</span>
+                </button>
+                <button mat-menu-item (click)="setTheme('theme-pink-dark')">
+                    <span>Theme 4</span>
+                </button>
+            </mat-menu>
+            <!-- <button mat-icon-button (click)="openThemeSelector()">
+                <mat-icon class="secondary-text">palette</mat-icon>
+            </button> -->
+            <!-- <button mat-icon-button (click)="toggleDarkMode()">
+                <mat-icon class="secondary-text">nights_stay</mat-icon>
+            </button> -->
             <button mat-icon-button class="toggle-sidebar-folded" (click)="hide()">
                 <mat-icon class="secondary-text">menu</mat-icon>
             </button>
