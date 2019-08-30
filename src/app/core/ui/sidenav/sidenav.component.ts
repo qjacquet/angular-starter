@@ -43,7 +43,7 @@ export class SidenavComponent implements OnInit {
   }
 
   setTheme(themeClass: string) {
-    this.themeService.set(themeClass);
+    this.themeService.setTheme(themeClass);
   }
 
 }

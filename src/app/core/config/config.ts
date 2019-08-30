@@ -1,32 +1,19 @@
 export interface Config {
-    colorTheme: string;
-    customScrollbars: boolean;
-    layout: {
-        style: string,
-        width: 'fullwidth' | 'boxed',
-        navbar: {
-            primaryBackground: string,
-            secondaryBackground: string,
-            hidden: boolean,
-            folded: boolean,
-            position: 'left' | 'right' | 'top',
-            variant: string
-        },
-        toolbar: {
-            customBackgroundColor: boolean,
-            background: string,
-            hidden: boolean,
-            position: 'above' | 'above-static' | 'above-fixed' | 'below' | 'below-static' | 'below-fixed'
-        }
-        footer: {
-            customBackgroundColor: boolean,
-            background: string,
-            hidden: boolean,
-            position: 'above' | 'above-static' | 'above-fixed' | 'below' | 'below-static' | 'below-fixed'
-        },
-        sidepanel: {
-            hidden: boolean,
-            position: 'left' | 'right'
-        }
+    theme: string;
+    sidebar: {
+        mode: 'side' | 'over' | 'push',
+        hasBackdrop: boolean,
+        opened: boolean
     };
 }
+
+export const appConfig: Config = {
+        theme: 'theme-default',
+        sidebar: {
+            mode: 'side',
+            hasBackdrop: false,
+            opened: true
+        }
+    };
+
+

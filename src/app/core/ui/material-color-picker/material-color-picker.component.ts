@@ -1,6 +1,6 @@
 import { Component, EventEmitter, forwardRef, Input, Output, ViewEncapsulation } from '@angular/core';
 
-import { animations } from '../../shared/animations';
+import { animations } from '../animations';
 import { MatColors } from '../../config/mat-colors';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 

@@ -3,7 +3,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { merge, Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
-import { animations } from '../../../../shared/animations';
+import { animations } from '../../../animations';
 import { NavigationItem } from '../../../../config/navigation';
 
 @Component({

@@ -26,6 +26,7 @@ import { DirectivesModule } from './core/directives';
 import { SidenavModule } from './core/ui/sidenav/sidenav.module';
 import { ThemeService } from './core/services/theme.service';
 import { MaterialColorPickerModule } from './core/ui/material-color-picker/material-color-picker.module';
+import { ConfigService } from './core/services/config.service';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { MaterialColorPickerModule } from './core/ui/material-color-picker/mater
     SidenavService,
     FormService,
     FormStepperService,
-    ThemeService
+    ThemeService,
+    ConfigService
   ],
   entryComponents: [
     DialogComponent

@@ -1,6 +1,6 @@
 export class DialogData {
     title  = '';
-    message = '';
+    content = '';
     showOKBtn = false;
     showCancelBtn = false;
 

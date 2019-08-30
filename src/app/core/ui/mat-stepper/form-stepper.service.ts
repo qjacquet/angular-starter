@@ -37,7 +37,8 @@ export class FormStepperService extends FormService {
      */
     next() {
         this.stepper.next();
-        this.save(this.stepper.selectedIndex);
+        this.step = this.stepper.selectedIndex;
+        this.saveForm();
     }
 
     /**
@@ -45,15 +46,16 @@ export class FormStepperService extends FormService {
      */
     previous() {
         this.stepper.previous();
-        this.save(this.stepper.selectedIndex);
+        this.step = this.stepper.selectedIndex;
+        this.saveForm();
     }
 
     /**
      * Go to required step and save the step
      */
     move(step: number) {
-        this.stepper.selectedIndex = step;
-        this.save(step);
+        this.step = this.stepper.selectedIndex = step;
+        this.saveForm();
     }
 
     /**
@@ -79,7 +81,8 @@ export class FormStepperService extends FormService {
 
     private setSelectionChange() {
         this.stepper.selectionChange.subscribe(x => {
-            this.save(x.selectedIndex);
+            this.step = x.selectedIndex;
+            this.saveForm();
         });
     }
 
