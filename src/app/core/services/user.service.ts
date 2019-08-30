@@ -26,9 +26,6 @@ export class UserService {
     }
 
     update(user: User) {
-        return this.http.put(`${environment.apiUrl}/users/${user.id}`, user)
-        .pipe(map(u => {
-            this.authenticationService.setCurrentUser(user);
-        }));
+        return this.http.put(`${environment.apiUrl}/users/${user.id}`, user);
     }
 }
