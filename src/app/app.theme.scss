@@ -259,7 +259,3 @@ $pink-dark-theme: mat-dark-theme($pink-dark-theme-primary-palette, $pink-dark-th
 
     @include color-classes($palettes);
 }
-
-html, body {
-    font-family: 'Roboto', sans-serif;
-}

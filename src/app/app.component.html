@@ -2,7 +2,7 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
 
 <div class="app-container {{themeClass}}">
-    <mat-sidenav-container [hasBackdrop]="false" fullscreen>
+    <mat-sidenav-container fullscreen>
         <!-- Left Side-->
         <mat-sidenav #sidenav mode="side" [opened]="currentUser" fxLayout="column">
             <app-sidenav [title]="title" [(selectedTheme)]="themeClass"></app-sidenav>

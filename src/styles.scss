@@ -1,3 +1,7 @@
 @import 'app/core/scss/core.scss';
 
 @import "app/app.theme";
+
+html, body {
+    font-family: 'Roboto', sans-serif;
+}
