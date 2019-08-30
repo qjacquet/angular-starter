@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StorageService } from './storage.service';
 
@@ -16,7 +16,6 @@ export class FormServiceModel {
         Object.assign(this, init);
     }
 }
-
 
 @Injectable()
 export class FormService extends StorageService {
@@ -77,17 +76,6 @@ export class FormService extends StorageService {
         }
         this.step = values.step;
     }
-
-    /**
-     * Load stored form and set
-     */
-    // load() {
-    //     const values = this.get();
-    //     if (values != null) {
-    //         this.form.setValue(values);
-    //     }
-    //     this.step = this.getStep();
-    // }
 
     /**
      * Delete saved form

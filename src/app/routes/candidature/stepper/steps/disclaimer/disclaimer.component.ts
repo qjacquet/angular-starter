@@ -1,6 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FormService } from 'src/app/core/services/form.service';
 
 @Component({
   selector: 'app-candidature-step-disclaimer',
@@ -12,8 +11,7 @@ export class DisclaimerComponent implements OnInit {
   formDisclaimer: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder,
-    private formService: FormService
+    private formBuilder: FormBuilder
   ) {
     this.formDisclaimer = this.formBuilder.group({
       accept: ['', Validators.requiredTrue]

@@ -1,7 +1,7 @@
 import { appConfig, Config } from '../config/config';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { StorageMode, StorageService } from './storage.service';
+import { StorageService } from './storage.service';
 
 const STORAGE_KEY = 'config';
 

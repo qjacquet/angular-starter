@@ -1,8 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from 'src/app/core/models/user';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
-import { FormService } from 'src/app/core/services/form.service';
 
 @Component({
   selector: 'app-candidature-step-payment',
@@ -21,8 +20,7 @@ export class PaymentComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authenticationService: AuthenticationService,
-    private formService: FormService
+    private authenticationService: AuthenticationService
   ) {
     this.currentUser = this.authenticationService.currentUserValue;
 

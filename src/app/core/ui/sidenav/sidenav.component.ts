@@ -4,7 +4,6 @@ import { SidenavService } from './sidenav.service';
 import { User } from '../../models/user';
 import { ThemeService } from '../../services/theme.service';
 import { AuthenticationService } from '../../services/authentication.service';
-import { DialogService } from '../../services/dialog.service';
 
 @Component({
   selector: 'app-sidenav',

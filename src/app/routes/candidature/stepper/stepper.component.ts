@@ -1,5 +1,4 @@
 import { Component, ViewChild, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { DisclaimerComponent } from './steps/disclaimer/disclaimer.component';
 import { PersonalDetailsComponent } from './steps/personal-details/personal-details.component';
 import { ContactComponent } from './steps/contact/contact.component';
@@ -8,8 +7,6 @@ import { AuthenticationService } from 'src/app/core/services/authentication.serv
 import { User } from 'src/app/core/models/user';
 import { MatStepper } from '@angular/material';
 import { UserService } from 'src/app/core/services/user.service';
-import { FormService } from '../../../core/services/form.service';
-import { CdkStep, StepperSelectionEvent } from '@angular/cdk/stepper';
 import { first } from 'rxjs/operators';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { Router, ActivatedRoute } from '@angular/router';

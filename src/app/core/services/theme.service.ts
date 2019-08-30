@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Subject, BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ConfigService } from './config.service';
-import { StorageService, StorageMode } from './storage.service';
 
 const STORAGE_KEY = 'theme';
 const DARK_VALUE = '-dark';

@@ -4,13 +4,11 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 import { environment } from 'src/environments/environment';
 import { AuthenticationService } from './authentication.service';
-import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
     constructor(
-        private http: HttpClient,
-        private authenticationService: AuthenticationService
+        private http: HttpClient
     ) { }
 
     getAll() {

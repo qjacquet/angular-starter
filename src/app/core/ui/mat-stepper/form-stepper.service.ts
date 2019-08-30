@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { MatStepper } from '@angular/material';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { FormService } from 'src/app/core/services/form.service';
-import { StepperSelectionEvent } from '@angular/cdk/stepper';
 
 /**
  * Service extension of `FormService`.

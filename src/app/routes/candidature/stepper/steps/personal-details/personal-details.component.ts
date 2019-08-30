@@ -1,9 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DateUtils } from '../../../../../core/helpers/utils';
 import { User } from 'src/app/core/models/user';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
-import { FormService } from 'src/app/core/services/form.service';
 import locales from 'src/app/core/shared/locales-data';
 
 export interface Country {
@@ -27,8 +26,7 @@ export class PersonalDetailsComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authenticationService: AuthenticationService,
-    private formService: FormService
+    private authenticationService: AuthenticationService
   ) {
     this.currentUser = this.authenticationService.currentUserValue;
 
