@@ -4,6 +4,7 @@ import { SidenavService } from './sidenav.service';
 import { User } from '../../models/user';
 import { ThemeService } from '../../services/theme.service';
 import { AuthenticationService } from '../../services/authentication.service';
+import { Config } from 'protractor';
 
 @Component({
   selector: 'app-sidenav',
@@ -15,11 +16,7 @@ export class SidenavComponent implements OnInit {
   items: Navigation[];
   currentUser: User;
 
-  @Input() title: string;
-
-  // Theme
-  @Input() selectedTheme: string;
-  @Output() selectedThemeChange = new EventEmitter<string>();
+  @Input() config: Config;
 
   constructor(
     private sideNavService: SidenavService,

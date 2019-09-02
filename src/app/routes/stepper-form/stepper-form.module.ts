@@ -1,12 +1,9 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { FormService } from 'src/app/core/services/form.service';
+import { SharedModule } from 'src/app/core/shared/shared.module';
 import { FormStepperService } from 'src/app/core/ui/mat-stepper/form-stepper.service';
 
-import { MaterialModule } from '../../core/shared/material.module';
 import { StepperFormComponent } from './stepper-form.component';
 import { StepperComponent } from './stepper/stepper.component';
 import { ContactComponent } from './stepper/steps/contact/contact.component';
@@ -32,11 +29,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forChild(routes),
 
-    CommonModule,
-    MaterialModule,
-    FormsModule,
-    ReactiveFormsModule,
-    FlexLayoutModule
+    SharedModule
   ],
   providers: [
     FormService,

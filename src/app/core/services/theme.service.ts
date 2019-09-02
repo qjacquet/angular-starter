@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ConfigService } from './config.service';
 
-const STORAGE_KEY = 'theme';
 const DARK_VALUE = '-dark';
 
 @Injectable()
@@ -12,8 +11,13 @@ export class ThemeService {
     public themeClass: Observable<string>;
 
     get theme(): string {
-        return this.configService.configValue.theme;
+        return this.configService.configValue.theme.class;
     }
+
+    set theme(value: string) {
+        this.configService.configValue.theme.class = value;
+    }
+
 
     get isDark() {
         return this.theme.includes(DARK_VALUE);
@@ -27,7 +31,7 @@ export class ThemeService {
     }
 
     setTheme(themeClass: string) {
-        this.configService.configValue.theme = themeClass;
+        this.theme = themeClass;
         this.configService.set(this.configService.configValue);
         this.themeClassSubject.next(themeClass);
     }

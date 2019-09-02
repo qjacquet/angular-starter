@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { StorageService } from './storage.service';
 
 const STORAGE_KEY = 'config';
+const RELOAD_CONFIG_WHEN_UPDATED = true;
 
 @Injectable()
 export class ConfigService extends StorageService {
@@ -24,19 +25,41 @@ export class ConfigService extends StorageService {
     }
 
     init() {
+        const storedConfig = this.get() as Config;
+
         // Init from appConfig
-        if (this.get() == null) {
+        if (storedConfig == null) {
             this.storageValue = appConfig;
             this.save();
         }
-        this.configSubject = new BehaviorSubject<Config>(this.get() as Config);
+
+        // Set stored config
+        this.configSubject = new BehaviorSubject<Config>(storedConfig);
         this.config = this.configSubject.asObservable();
+
+        // Update config schema if needed
+        if (RELOAD_CONFIG_WHEN_UPDATED) {
+            this.updateSchema(storedConfig);
+        }
     }
 
     set(config: Config) {
-        this.storageId = STORAGE_KEY;
-        this.storageValue = config;
-        this.save();
+        super.setValuesAndSave(STORAGE_KEY, config);
         this.configSubject.next(config);
+    }
+
+    /**
+     * Update stored config schema from default config
+     * @param storedConfig
+     */
+    private updateSchema(storedConfig) {
+        Object.keys(appConfig).forEach((key) => {
+            // Conditions : Stored config key not exist or exist but is empty
+            if (storedConfig[key] === undefined || storedConfig[key] !== undefined && String(storedConfig[key]).length === 0) {
+                storedConfig[key] = appConfig[key];
+            }
+        });
+
+        this.set(storedConfig);
     }
 }

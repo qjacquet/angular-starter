@@ -1,4 +1,4 @@
-import { AlertService } from '../../../../core/services/alert.service';
+import { AlertService } from '../../../../core/ui/alert/alert.service';
 import { AuthenticationService } from '../../../../core/services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';

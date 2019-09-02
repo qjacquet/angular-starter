@@ -1,11 +1,11 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
 
-<div class="app-container {{config.theme}}">
+<div class="app-container {{config.theme.class}}">
     <mat-sidenav-container [hasBackdrop]="config.sidebar.hasBackdrop" fullscreen>
         <!-- Left Side-->
-        <mat-sidenav #sidenav [mode]="config.sidebar.mode" [opened]="config.sidebar.opened" fxLayout="column">
-            <app-sidenav [title]="title" [(selectedTheme)]="config.theme"></app-sidenav>
+        <mat-sidenav #sidenav [mode]="config.sidebar.mode" [opened]="config.sidebar.opened && currentUser" fxLayout="column">
+            <app-sidenav *ngIf="currentUser" [config]="config"></app-sidenav>
         </mat-sidenav>
 
         <!-- Right Side-->

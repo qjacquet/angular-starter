@@ -14,13 +14,12 @@ import { DirectivesModule } from './core/directives';
 import { ErrorInterceptor } from './core/helpers/error.interceptor';
 import { FakeBackendProvider } from './core/helpers/fake-backend';
 import { JwtInterceptor } from './core/helpers/jwt.interceptor';
-import { AlertService } from './core/services/alert.service';
+import { AlertService } from './core/ui/alert/alert.service';
 import { AuthenticationService } from './core/services/authentication.service';
 import { ConfigService } from './core/services/config.service';
-import { DialogService } from './core/services/dialog.service';
+import { DialogService } from './core/ui/dialog/dialog.service';
 import { FormService } from './core/services/form.service';
 import { ThemeService } from './core/services/theme.service';
-import { MaterialModule } from './core/shared/material.module';
 import { DialogComponent } from './core/ui/dialog/dialog.component';
 import { FormStepperService } from './core/ui/mat-stepper/form-stepper.service';
 import { MaterialColorPickerModule } from './core/ui/material-color-picker/material-color-picker.module';
@@ -28,6 +27,9 @@ import { SidenavModule } from './core/ui/sidenav/sidenav.module';
 import { SidenavService } from './core/ui/sidenav/sidenav.service';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
+
+import { SharedModule } from './core/shared/shared.module';
+
 
 @NgModule({
   declarations: [
@@ -41,7 +43,7 @@ import { HeaderComponent } from './layout/header/header.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    MaterialModule,
+    SharedModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     LoggerModule.forRoot({

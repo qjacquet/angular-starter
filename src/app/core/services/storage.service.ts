@@ -28,6 +28,12 @@ export class StorageService {
         }
     }
 
+    protected setValuesAndSave(key: string, value: any) {
+        this.storageId = key;
+        this.storageValue = value;
+        this.save();
+    }
+
     load() {
         this.storageValue = this.get();
     }

@@ -3,7 +3,7 @@ import { MatStepper } from '@angular/material';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { User } from 'src/app/core/models/user';
-import { AlertService } from 'src/app/core/services/alert.service';
+import { AlertService } from 'src/app/core/ui/alert/alert.service';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { UserService } from 'src/app/core/services/user.service';
 import { FormStepperService } from 'src/app/core/ui/mat-stepper/form-stepper.service';

@@ -28,8 +28,6 @@ export class AppComponent implements OnInit {
 
   @ViewChild('sidenav', null) public sidenav: MatSidenav;
 
-  title = 'Angular Starter';
-
   currentUser: User;
 
   constructor(
@@ -90,6 +88,7 @@ export class AppComponent implements OnInit {
 
   initSidenav() {
     this.sidenavService.setSidenav(this.sidenav);
+    this.config.sidebar.opened ? this.sidenavService.open() : this.sidenavService.close();
   }
 
   initSplashscreenDisable() {
