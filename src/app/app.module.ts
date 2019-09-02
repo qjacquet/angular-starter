@@ -27,8 +27,10 @@ import { SidenavModule } from './core/ui/sidenav/sidenav.module';
 import { SidenavService } from './core/ui/sidenav/sidenav.service';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
+import { SearchComponent } from './core/ui/search/search.component';
 
 import { SharedModule } from './core/shared/shared.module';
+import { OverlayContainer, FullscreenOverlayContainer } from '@angular/cdk/overlay';
 
 
 @NgModule({
@@ -36,7 +38,8 @@ import { SharedModule } from './core/shared/shared.module';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    DialogComponent
+    DialogComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -73,10 +76,12 @@ import { SharedModule } from './core/shared/shared.module';
     FormService,
     FormStepperService,
     ThemeService,
-    ConfigService
+    ConfigService,
+    {provide: OverlayContainer, useClass: FullscreenOverlayContainer}
   ],
   entryComponents: [
-    DialogComponent
+    DialogComponent,
+    SearchComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -5,17 +5,14 @@
             (click)="showSidenav()">
             <mat-icon class="secondary-text">menu</mat-icon>
         </button>
+        <button mat-icon-button matSuffix (click)="openSearchOverlay()">
+            <mat-icon>search</mat-icon>
+        </button>
 
         <span fxFlex></span>
 
         <div class="tools">
-            <mat-form-field appearance="standard" fxFlex>
-                <mat-label>Search</mat-label>
-                <input matInput>
-                <button mat-icon-button matSuffix (click)="search()">
-                    <mat-icon>search</mat-icon>
-                </button>
-            </mat-form-field>
+
         </div>
 
         <span fxFlex></span>

@@ -66,8 +66,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         function register() {
             const user = body;
 
-            console.log(body);
-
             if (users.find(x => x.email.toUpperCase() === user.email.toUpperCase())) {
                 return error('Email "' + user.email + '" is already used');
             }

@@ -11,7 +11,6 @@ export class MovieApiService {
     constructor(
         private http: HttpClient
     ) {
-        console.log(environment);
         this.url = environment.api.movies.url + environment.api.movies.version + '/';
         this.key = environment.api.movies.key;
      }
