@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
 import { User } from '../../../../core/models/user';
-import { AuthenticationService } from '../../../../core/services/authentication.service';
 import { MovieApiService } from '../../services/movie-api.service';
 
 @Component({

@@ -1,18 +1,19 @@
-import { Component, ViewChild, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
-import { DisclaimerComponent } from './steps/disclaimer/disclaimer.component';
-import { PersonalDetailsComponent } from './steps/personal-details/personal-details.component';
-import { ContactComponent } from './steps/contact/contact.component';
-import { PaymentComponent } from './steps/payment/payment.component';
-import { AuthenticationService } from 'src/app/core/services/authentication.service';
-import { User } from 'src/app/core/models/user';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatStepper } from '@angular/material';
-import { UserService } from 'src/app/core/services/user.service';
+import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { User } from 'src/app/core/models/user';
 import { AlertService } from 'src/app/core/services/alert.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
+import { UserService } from 'src/app/core/services/user.service';
 import { FormStepperService } from 'src/app/core/ui/mat-stepper/form-stepper.service';
 
-const selector = 'app-candidature-stepper';
+import { ContactComponent } from './steps/contact/contact.component';
+import { DisclaimerComponent } from './steps/disclaimer/disclaimer.component';
+import { PaymentComponent } from './steps/payment/payment.component';
+import { PersonalDetailsComponent } from './steps/personal-details/personal-details.component';
+
+const selector = 'app-form-stepper-stepper';
 
 @Component({
   selector,
@@ -117,8 +118,8 @@ export class StepperComponent implements OnInit, AfterViewInit {
       }
     };
 
-    // Update candidature status
-    this.currentUser.candidature = {
+    // Update form stepper status
+    this.currentUser.formCompleted = {
       status: 'submited'
     };
   }
@@ -130,7 +131,7 @@ export class StepperComponent implements OnInit, AfterViewInit {
       .subscribe(
         data => {
           this.formStepperService.deleteSave();
-          this.alertService.show('Candidature send ! You will receive a mail soon.');
+          this.alertService.show('Form stepper send ! You will receive a mail soon.');
         },
         error => {
           this.alertService.show(error);

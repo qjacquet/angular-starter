@@ -75,7 +75,7 @@ export const navigation: Navigation[] = [
                         title: 'Stepper',
                         type: 'item',
                         icon: 'assignment',
-                        url: '/candidature'
+                        url: '/stepper'
                     }
                 ]
             },

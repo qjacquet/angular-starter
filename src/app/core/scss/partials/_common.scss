@@ -1,0 +1,9 @@
+/**
+ * Need to import a default theme before cutsomise theming.
+ * Required for fix some Angular Material CSS issues like mat-select-panel'
+ */
+ @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+@mixin common-theme($theme){
+
+}

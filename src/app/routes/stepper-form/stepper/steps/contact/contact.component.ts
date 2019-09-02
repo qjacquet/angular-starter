@@ -4,7 +4,7 @@ import { User } from 'src/app/core/models/user';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 
 @Component({
-  selector: 'app-candidature-step-contact',
+  selector: 'app-form-stepper-step-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss']
 })

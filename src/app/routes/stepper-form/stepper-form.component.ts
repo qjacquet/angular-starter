@@ -3,11 +3,11 @@ import { AuthenticationService } from 'src/app/core/services/authentication.serv
 import { User } from 'src/app/core/models/user';
 
 @Component({
-  selector: 'app-candidature',
-  templateUrl: './candidature.component.html',
-  styleUrls: ['./candidature.component.scss'],
+  selector: 'app-stepper-form',
+  templateUrl: './stepper-form.component.html',
+  styleUrls: ['./stepper-form.component.scss'],
 })
-export class CandidatureComponent implements OnInit {
+export class StepperFormComponent implements OnInit {
 
 
   currentUser: User;
@@ -19,6 +19,6 @@ export class CandidatureComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.canShowForm = this.currentUser.candidature == null || this.currentUser.candidature.status === 'toUpdate';
+    this.canShowForm = this.currentUser.formCompleted == null || this.currentUser.formCompleted.status === 'toUpdate';
   }
 }

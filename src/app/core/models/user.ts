@@ -25,7 +25,7 @@ export class User {
             email?: string
         };
     };
-    candidature?: {
+    formCompleted?: {
         status?: string;
     };
 

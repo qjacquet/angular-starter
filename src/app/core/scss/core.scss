@@ -4,7 +4,8 @@
 @import "themes";
 
 // Include core Angular Material styles
-@include mat-core();
+ @include mat-core();
+
 
 // Partials
 @import "partials/colors";

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DateUtils } from '../../../../../core/helpers/utils';
 import { User } from 'src/app/core/models/user';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
-import locales from 'src/app/core/shared/locales-data';
+import locales from 'src/app/core/helpers/locales-data';
 
 export interface Country {
   value: string;
@@ -12,7 +12,7 @@ export interface Country {
 }
 
 @Component({
-  selector: 'app-candidature-step-personal-details',
+  selector: 'app-form-stepper-step-personal-details',
   templateUrl: './personal-details.component.html',
   styleUrls: ['./personal-details.component.scss']
 })

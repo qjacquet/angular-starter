@@ -1,28 +1,29 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Routes, RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from '../../core/shared/material.module';
+import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { CandidatureComponent } from './candidature.component';
-import { DisclaimerComponent } from './stepper/steps/disclaimer/disclaimer.component';
-import { PersonalDetailsComponent } from './stepper/steps/personal-details/personal-details.component';
-import { ContactComponent } from './stepper/steps/contact/contact.component';
-import { PaymentComponent } from './stepper/steps/payment/payment.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 import { FormService } from 'src/app/core/services/form.service';
-import { StepperComponent } from './stepper/stepper.component';
 import { FormStepperService } from 'src/app/core/ui/mat-stepper/form-stepper.service';
+
+import { MaterialModule } from '../../core/shared/material.module';
+import { StepperFormComponent } from './stepper-form.component';
+import { StepperComponent } from './stepper/stepper.component';
+import { ContactComponent } from './stepper/steps/contact/contact.component';
+import { DisclaimerComponent } from './stepper/steps/disclaimer/disclaimer.component';
+import { PaymentComponent } from './stepper/steps/payment/payment.component';
+import { PersonalDetailsComponent } from './stepper/steps/personal-details/personal-details.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: CandidatureComponent,
+    component: StepperFormComponent,
   }
 ];
 
 @NgModule({
   declarations: [
-    CandidatureComponent,
+    StepperFormComponent,
     DisclaimerComponent,
     PersonalDetailsComponent,
     ContactComponent,
@@ -42,4 +43,4 @@ const routes: Routes = [
     FormStepperService
   ]
 })
-export class CandidatureModule { }
+export class StepperFormModule { }

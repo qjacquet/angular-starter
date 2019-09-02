@@ -1,6 +1,7 @@
-import { AuthGuard } from './core/helpers/auth.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+import { AuthGuard } from './core/helpers/auth.guard';
 
 const routes: Routes = [
   {
@@ -28,8 +29,8 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'candidature',
-    loadChildren: './routes/candidature/candidature.module#CandidatureModule',
+    path: 'stepper',
+    loadChildren: './routes/stepper-form/stepper-form.module#StepperFormModule',
     canActivate: [AuthGuard]
   },
   {

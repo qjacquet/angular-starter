@@ -1,32 +1,33 @@
-import { AlertService } from './core/services/alert.service';
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-import { AuthenticationService } from './core/services/authentication.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { DialogComponent } from './core/ui/dialog/dialog.component';
-import { DialogService } from './core/services/dialog.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { LoggerModule } from 'ngx-logger';
+
 import { environment } from '../environments/environment';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { DirectivesModule } from './core/directives';
 import { ErrorInterceptor } from './core/helpers/error.interceptor';
 import { FakeBackendProvider } from './core/helpers/fake-backend';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { JwtInterceptor } from './core/helpers/jwt.interceptor';
+import { AlertService } from './core/services/alert.service';
+import { AuthenticationService } from './core/services/authentication.service';
+import { ConfigService } from './core/services/config.service';
+import { DialogService } from './core/services/dialog.service';
+import { FormService } from './core/services/form.service';
+import { ThemeService } from './core/services/theme.service';
+import { MaterialModule } from './core/shared/material.module';
+import { DialogComponent } from './core/ui/dialog/dialog.component';
+import { FormStepperService } from './core/ui/mat-stepper/form-stepper.service';
+import { MaterialColorPickerModule } from './core/ui/material-color-picker/material-color-picker.module';
+import { SidenavModule } from './core/ui/sidenav/sidenav.module';
+import { SidenavService } from './core/ui/sidenav/sidenav.service';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { JwtInterceptor } from './core/helpers/jwt.interceptor';
-import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
-import { MaterialModule } from './core/shared/material.module';
-import { NgModule, LOCALE_ID } from '@angular/core';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { SidenavService } from './core/ui/sidenav/sidenav.service';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import { FormService } from './core/services/form.service';
-import { FormStepperService } from './core/ui/mat-stepper/form-stepper.service';
-import { DirectivesModule } from './core/directives';
-import { SidenavModule } from './core/ui/sidenav/sidenav.module';
-import { ThemeService } from './core/services/theme.service';
-import { MaterialColorPickerModule } from './core/ui/material-color-picker/material-color-picker.module';
-import { ConfigService } from './core/services/config.service';
 
 @NgModule({
   declarations: [
