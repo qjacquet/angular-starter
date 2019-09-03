@@ -33,8 +33,6 @@ import { SharedModule } from './core/shared/shared.module';
 import { OverlayContainer, FullscreenOverlayContainer } from '@angular/cdk/overlay';
 import { MatFileUploadComponent } from './core/ui/mat-file-upload/mat-file-upload.component';
 
-import { MatFileUploadModule } from 'angular-material-fileupload';
-
 
 @NgModule({
   declarations: [
@@ -61,8 +59,7 @@ import { MatFileUploadModule } from 'angular-material-fileupload';
     }),
     DirectivesModule,
     SidenavModule,
-    MaterialColorPickerModule,
-    MatFileUploadModule
+    MaterialColorPickerModule
   ],
   providers: [
     AuthenticationService,
