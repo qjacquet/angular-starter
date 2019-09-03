@@ -4,7 +4,7 @@ import { AuthenticationService } from '../../core/services/authentication.servic
 import { User } from '../../core/models/user';
 import { SidenavService } from '../../core/ui/sidenav/sidenav.service';
 import { Overlay, GlobalPositionStrategy, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
-import { ComponentPortal } from '@angular/cdk/portal';
+import { ComponentPortal, DomPortalHost } from '@angular/cdk/portal';
 import { SearchComponent } from 'src/app/core/ui/search/search.component';
 import { AlertService } from 'src/app/core/ui/alert/alert.service';
 
@@ -64,11 +64,9 @@ export class HeaderComponent implements OnInit {
       positionStrategy,
       width: '100%'
     });
-
     this.overlayRef = this.overlay.create(overlayConfig);
-    const filePreviewPortal = new ComponentPortal(SearchComponent);
-    this.overlayRef.attach(filePreviewPortal);
-
+    const searchPortal = new ComponentPortal(SearchComponent);
+    this.overlayRef.attach(searchPortal);
     this.overlayRef.backdropClick().subscribe(_ => this.closeSearchOverlay());
   }
 

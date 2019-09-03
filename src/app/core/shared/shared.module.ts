@@ -4,6 +4,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MaterialModule } from './material.module';
+import { DirectivesModule } from '../directives/index';
 
 @NgModule({
     imports: [
@@ -11,14 +12,18 @@ import { MaterialModule } from './material.module';
         FormsModule,
         ReactiveFormsModule,
         FlexLayoutModule,
-        MaterialModule
+        MaterialModule,
+
+        DirectivesModule
     ],
     exports: [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
         FlexLayoutModule,
-        MaterialModule
+        MaterialModule,
+
+        DirectivesModule
     ]
 })
 export class SharedModule {
