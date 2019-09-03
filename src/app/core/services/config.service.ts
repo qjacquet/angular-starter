@@ -25,12 +25,15 @@ export class ConfigService extends StorageService {
     }
 
     init() {
-        const storedConfig = this.get() as Config;
+        let storedConfig = this.get() as Config;
 
         // Init from appConfig
         if (storedConfig == null) {
             this.storageValue = appConfig;
             this.save();
+
+            // Reload config
+            storedConfig = this.get() as Config;
         }
 
         // Set stored config
