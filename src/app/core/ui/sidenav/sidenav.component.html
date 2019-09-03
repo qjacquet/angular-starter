@@ -34,8 +34,11 @@
     <div class="navbar-content">
         <div class="user" fxLayout="column">
             <div class="avatar-container">
-                <img class="avatar" src="../../../assets/icons/icon-72x72.png">
-            </div>
+                <img class="avatar" [src]="getAvatar()">
+                <button mat-icon-button (click)="openAvatarDialog()" color="white" style="position: absolute;bottom: -5px;left: 20px;opacity: 0.8;">
+                    <mat-icon>camera_alt</mat-icon>
+                </button>
+            </div> 
             <div class="mat-h3">{{currentUser.profile.firstName}} {{currentUser.profile.lastName}}</div>
         </div>
         <div class="nav">

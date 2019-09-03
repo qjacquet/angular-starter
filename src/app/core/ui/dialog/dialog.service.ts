@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { DialogData } from './dialog-data/dialog-data';
 import { DialogComponent } from './dialog.component';
+import { SearchComponent } from '../search/search.component';
 
 @Injectable()
 export class DialogService {

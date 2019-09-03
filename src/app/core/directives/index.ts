@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 
-import { AutoFocusDirective } from './auto-focus.directive'
+import { AutoFocusDirective } from './auto-focus.directive';
+import { FileUploadInputFor } from './file-upload-input-for.directive';
 
 @NgModule({
     declarations: [
-        AutoFocusDirective
+        AutoFocusDirective,
+        FileUploadInputFor
     ],
     imports     : [
     ],
     exports     : [
-        AutoFocusDirective
+        AutoFocusDirective,
+        FileUploadInputFor
     ],
     entryComponents: [
     ]

@@ -26,4 +26,8 @@ export class UserService {
     update(user: User) {
         return this.http.put(`${environment.apiUrl}/users/${user.id}`, user);
     }
+
+    getUserAvatar(user: User) {
+        return user.profile.avatarBase64;
+    }
 }

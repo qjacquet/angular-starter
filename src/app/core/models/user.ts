@@ -23,7 +23,8 @@ export class User {
             },
             phone?: string,
             email?: string
-        };
+        },
+        avatarBase64?: string
     };
     formCompleted?: {
         status?: string;

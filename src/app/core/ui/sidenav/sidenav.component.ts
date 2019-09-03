@@ -6,6 +6,9 @@ import { ThemeService } from '../../services/theme.service';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Config } from 'protractor';
 
+import { MatDialog } from '@angular/material';
+import { MatFileUploadComponent } from '../mat-file-upload/mat-file-upload.component';
+
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
@@ -21,7 +24,8 @@ export class SidenavComponent implements OnInit {
   constructor(
     private sideNavService: SidenavService,
     private themeService: ThemeService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    public dialog: MatDialog
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
@@ -40,6 +44,18 @@ export class SidenavComponent implements OnInit {
 
   setTheme(themeClass: string) {
     this.themeService.setTheme(themeClass);
+  }
+
+  getAvatar() {
+    return this.authenticationService.getAvatar();
+  }
+
+  openAvatarDialog() {
+    this.dialog.open(MatFileUploadComponent, {
+      closeOnNavigation: true,
+      width: '80%',
+      height: '80%'
+    });
   }
 
 }

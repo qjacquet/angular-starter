@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { User } from '../models/user';
+import { UserService } from './user.service';
 
 
 @Injectable({ providedIn: 'root' })
@@ -11,7 +12,10 @@ export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
 
-    constructor(private http: HttpClient) {
+    constructor(
+        private http: HttpClient,
+        private userService: UserService
+    ) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
     }
@@ -40,5 +44,9 @@ export class AuthenticationService {
     setCurrentUser(user: User) {
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);
+    }
+
+    getAvatar() {
+        return 'data:image/png;base64,' + this.userService.getUserAvatar(this.currentUserValue);
     }
 }

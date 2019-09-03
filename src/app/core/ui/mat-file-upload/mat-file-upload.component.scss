@@ -1,0 +1,41 @@
+:host {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    #upload-button {
+        border: dashed;
+        height: 150px;
+        font-size: 32px;
+
+        ::ng-deep mat-icon {
+            font-size: 32px;
+            height: 32px;
+            width: 32px;
+        }
+    }
+
+    ul,
+    li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    #file-label {
+        display: inline-flex;
+        vertical-align: middle;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    #file-label mat-icon {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    #file-label a {
+        cursor: pointer;
+    }
+}

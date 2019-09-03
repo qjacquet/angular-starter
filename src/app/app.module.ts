@@ -31,6 +31,9 @@ import { SearchComponent } from './core/ui/search/search.component';
 
 import { SharedModule } from './core/shared/shared.module';
 import { OverlayContainer, FullscreenOverlayContainer } from '@angular/cdk/overlay';
+import { MatFileUploadComponent } from './core/ui/mat-file-upload/mat-file-upload.component';
+
+import { MatFileUploadModule } from 'angular-material-fileupload';
 
 
 @NgModule({
@@ -39,7 +42,8 @@ import { OverlayContainer, FullscreenOverlayContainer } from '@angular/cdk/overl
     HeaderComponent,
     FooterComponent,
     DialogComponent,
-    SearchComponent
+    SearchComponent,
+    MatFileUploadComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +61,8 @@ import { OverlayContainer, FullscreenOverlayContainer } from '@angular/cdk/overl
     }),
     DirectivesModule,
     SidenavModule,
-    MaterialColorPickerModule
+    MaterialColorPickerModule,
+    MatFileUploadModule
   ],
   providers: [
     AuthenticationService,
@@ -81,7 +86,8 @@ import { OverlayContainer, FullscreenOverlayContainer } from '@angular/cdk/overl
   ],
   entryComponents: [
     DialogComponent,
-    SearchComponent
+    SearchComponent,
+    MatFileUploadComponent,
   ],
   bootstrap: [AppComponent]
 })
