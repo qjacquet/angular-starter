@@ -12,19 +12,15 @@ export class UserService {
     ) { }
 
     getAll() {
-        return this.http.get<User[]>(`${environment.apiUrl}/users`);
-    }
-
-    register(user: User) {
-        return this.http.post(`${environment.apiUrl}/users/register`, user);
+        return this.http.get<User[]>(`${environment.api.auth.url}/users`);
     }
 
     delete(id: number) {
-        return this.http.delete(`${environment.apiUrl}/users/${id}`);
+        return this.http.delete(`${environment.api.auth.url}/users/${id}`);
     }
 
     update(user: User) {
-        return this.http.put(`${environment.apiUrl}/users/${user.id}`, user);
+        return this.http.put(`${environment.api.auth.url}/users/${user.id}`, user);
     }
 
     getUserAvatar(user: User) {

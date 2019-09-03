@@ -92,7 +92,6 @@ export class MatFileUploadComponent implements OnInit {
                         if (typeof (event) === 'object') {
                               this.removeFileFromArray(file);
                               this.complete.emit(event.body);
-                              console.log(file);
                         }
                   }
             );

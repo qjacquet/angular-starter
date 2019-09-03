@@ -2,11 +2,16 @@ import { NgxLoggerLevel } from 'ngx-logger';
 
 export const environment = {
   production: false,
-  apiUrl: 'localhost',
   logLevel: NgxLoggerLevel.WARN,
   serverLogLevel: NgxLoggerLevel.OFF,
 
   api: {
+    logs: {
+      url: 'localhost',
+    },
+    auth: {
+      url: 'https://localhost:5001/api',
+    },
     movies: {
       url: 'https://api.themoviedb.org/',
       version: '3',

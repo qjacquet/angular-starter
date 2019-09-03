@@ -20,8 +20,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                 this.authenticationService.logout();
                 location.reload();
             }
-
-            const error = err.error.message || err.statusText;
+            const error = JSON.stringify(err.error);
 
             this.logError(error);
 

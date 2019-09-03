@@ -54,7 +54,7 @@ export class RegisterComponent implements OnInit {
         }
 
         this.loading = true;
-        this.userService.register(this.getFormUser())
+        this.authenticationService.register(this.getFormUser())
             .pipe(first())
             .subscribe(
                 data => {
@@ -72,6 +72,7 @@ export class RegisterComponent implements OnInit {
 
         return new User({
             email: this.registerForm.get('email').value,
+            username: this.registerForm.get('email').value,
             password: this.registerForm.get('password').value,
             profile: {
                 firstName: name[0],

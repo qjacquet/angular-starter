@@ -52,7 +52,7 @@ import { MatFileUploadComponent } from './core/ui/mat-file-upload/mat-file-uploa
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     LoggerModule.forRoot({
-      serverLoggingUrl: `${environment.apiUrl}api/logs`,
+      serverLoggingUrl: `${environment.api.logs.url}api/logs`,
       level: environment.logLevel,
       serverLogLevel: environment.serverLogLevel,
       disableConsoleLogging: false
@@ -70,7 +70,7 @@ import { MatFileUploadComponent } from './core/ui/mat-file-upload/mat-file-uploa
     { provide: MAT_DATE_LOCALE, useValue: LOCALE_ID},
 
     // provider used to create fake backend
-    FakeBackendProvider,
+    //FakeBackendProvider,
 
     DialogService,
     AlertService,
