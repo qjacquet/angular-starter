@@ -27,7 +27,9 @@ export class SidenavComponent implements OnInit {
     private authenticationService: AuthenticationService,
     public dialog: MatDialog
   ) {
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    this.authenticationService.currentUser.subscribe(u => {
+      this.currentUser = u;
+    });
   }
 
   ngOnInit() {
@@ -47,7 +49,7 @@ export class SidenavComponent implements OnInit {
   }
 
   getAvatar() {
-    return this.authenticationService.getAvatar();
+    return null; //this.authenticationService.getAvatar();
   }
 
   openAvatarDialog() {
@@ -56,6 +58,10 @@ export class SidenavComponent implements OnInit {
       width: '80%',
       height: '80%'
     });
+  }
+
+  disconnect() {
+    this.authenticationService.logout();
   }
 
 }

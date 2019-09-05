@@ -11,6 +11,10 @@ export const environment = {
     },
     auth: {
       url: 'https://localhost:5001/api',
+      token : {
+        name : 'tokenString',
+        userId: 'nameid'
+      }
     },
     movies: {
       url: 'https://api.themoviedb.org/',

@@ -28,7 +28,9 @@ export class PersonalDetailsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService
   ) {
-    this.currentUser = this.authenticationService.currentUserValue;
+    this.authenticationService.currentUser.subscribe(u => {
+      this.currentUser = u;
+    });
 
     const profile = this.currentUser.profile;
     const personalDetails = profile ? profile.personalDetails : null;

@@ -22,7 +22,9 @@ export class PaymentComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService
   ) {
-    this.currentUser = this.authenticationService.currentUserValue;
+    this.authenticationService.currentUser.subscribe(u => {
+      this.currentUser = u;
+    });
 
     this.formPayment = this.formBuilder.group({
       creditCardNumber:           ['', Validators.required],

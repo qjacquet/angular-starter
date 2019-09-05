@@ -63,7 +63,9 @@ export class StepperComponent implements OnInit, AfterViewInit {
     private router: Router,
     private formStepperService: FormStepperService
   ) {
-    this.currentUser = this.authenticationService.currentUserValue;
+    this.authenticationService.currentUser.subscribe(u => {
+      this.currentUser = u;
+    });
   }
 
   ngOnInit() {

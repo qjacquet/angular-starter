@@ -13,6 +13,7 @@ import { ConfigService } from './core/services/config.service';
 import { animations } from './core/ui/animations';
 import { SidenavService } from './core/ui/sidenav/sidenav.service';
 import { SplashScreenService } from './core/ui/splash-screen/splash-screen.service';
+import { UserService } from './core/services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -36,13 +37,16 @@ export class AppComponent implements OnInit {
     private snackbar: MatSnackBar,
     private sidenavService: SidenavService,
     private splashScreenService: SplashScreenService,
-    private configService: ConfigService
+    private configService: ConfigService,
+    private userService: UserService
   ) {
     // Set the private defaults
     this.unsubscribeAll = new Subject();
 
     // Get current user
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    this.authenticationService.currentUser.subscribe(u => {
+      this.currentUser = u;
+    });
 
     // Update config
     this.configService.config.subscribe(c => {

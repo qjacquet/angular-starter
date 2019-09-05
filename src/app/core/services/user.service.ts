@@ -4,15 +4,26 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 import { environment } from 'src/environments/environment';
 import { AuthenticationService } from './authentication.service';
+import { map, first } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
+
+    userObservable: Observable<User>;
+
     constructor(
         private http: HttpClient
-    ) { }
+    ) {
+        this.userObservable = new Observable<User>();
+    }
 
     getAll() {
         return this.http.get<User[]>(`${environment.api.auth.url}/users`);
+    }
+
+    getById(id: number) {
+        return this.http.get<User>(`${environment.api.auth.url}/users/${id}`);
     }
 
     delete(id: number) {
@@ -24,6 +35,6 @@ export class UserService {
     }
 
     getUserAvatar(user: User) {
-        return user.profile.avatarBase64;
+        return null; //user.profile.avatarBase64;
     }
 }

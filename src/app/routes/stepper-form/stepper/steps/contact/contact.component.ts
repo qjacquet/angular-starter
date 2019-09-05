@@ -17,7 +17,9 @@ export class ContactComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService
   ) {
-    this.currentUser = this.authenticationService.currentUserValue;
+    this.authenticationService.currentUser.subscribe(u => {
+      this.currentUser = u;
+    });
 
     const contact = this.currentUser.profile.contact;
     const address = contact ? contact.address : null;

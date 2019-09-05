@@ -15,7 +15,9 @@ export class StepperFormComponent implements OnInit {
   constructor(
     private authenticationService: AuthenticationService
   ) {
-    this.currentUser = this.authenticationService.currentUserValue;
+    this.authenticationService.currentUser.subscribe(u => {
+      this.currentUser = u;
+    });
   }
 
   ngOnInit() {

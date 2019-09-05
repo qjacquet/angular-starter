@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
         private formService: FormService
     ) {
         // redirect to home if already logged in
-        if (this.authenticationService.currentUserValue) {
+        if (this.authenticationService.isLogged()) {
             this.router.navigate(['/']);
         }
     }
@@ -70,19 +70,11 @@ export class RegisterComponent implements OnInit {
     getFormUser() {
         const name = this.registerForm.get('name').value.split(' ', 2);
 
-        return new User({
-            email: this.registerForm.get('email').value,
+        return new Object({
             username: this.registerForm.get('email').value,
             password: this.registerForm.get('password').value,
-            profile: {
-                firstName: name[0],
-                lastName: name[1],
-                contact: {
-                    firstName: name[0],
-                    lastName: name[1],
-                    email: this.registerForm.get('email').value
-                }
-            }
-        }) as User;
+            firstName: name[0],
+            lastName: name[1]
+        });
     }
 }
