@@ -1,26 +1,8 @@
 <div fxLayout="column" style="width: 33%;">
     <div fxLayout="row" fxFlex>
-        <button fxFlex id="upload-button" mat-stroked-button color="primary" (click)="onClick()">
+        <input type="file" fxFlex id="upload-button" ng2FileSelect [uploader]="uploader" mat-stroked-button color="primary" (click)="onClick()" />
             <mat-icon>file_upload</mat-icon>
             {{text}}
-        </button>
-    </div>
-    <div fxLayout="row" fxFlex>
-        <ul fxFlex>
-            <li *ngFor="let file of files" [@fadeInOut]="file.state">
-                <mat-progress-bar [value]="file.progress"></mat-progress-bar>
-                <span id="file-label">
-                    {{file.data.name}}
-                    <a title="Retry" (click)="retryFile(file)" *ngIf="file.canRetry">
-                        <mat-icon>refresh</mat-icon>
-                    </a>
-                    <a title="Cancel" (click)="cancelFile(file)" *ngIf="file.canCancel">
-                        <mat-icon>cancel</mat-icon>
-                    </a>
-                </span>
-            </li>
-        </ul>
-        <input type="file" id="fileUpload" name="fileUpload" multiple="multiple" accept="{{accept}}"
-            style="display:none;" />
+        <!-- </button> -->
     </div>
 </div>

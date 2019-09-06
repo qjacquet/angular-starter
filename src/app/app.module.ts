@@ -32,6 +32,7 @@ import { SearchComponent } from './core/ui/search/search.component';
 import { SharedModule } from './core/shared/shared.module';
 import { OverlayContainer, FullscreenOverlayContainer } from '@angular/cdk/overlay';
 import { MatFileUploadComponent } from './core/ui/mat-file-upload/mat-file-upload.component';
+import { FileSelectDirective, FileDropDirective, FileUploader } from 'ng2-file-upload/ng2-file-upload';
 
 
 @NgModule({
@@ -41,7 +42,9 @@ import { MatFileUploadComponent } from './core/ui/mat-file-upload/mat-file-uploa
     FooterComponent,
     DialogComponent,
     SearchComponent,
-    MatFileUploadComponent
+    MatFileUploadComponent,
+    FileSelectDirective,
+    FileDropDirective,
   ],
   imports: [
     BrowserModule,

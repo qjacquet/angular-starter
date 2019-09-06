@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, first } from 'rxjs/operators';
 import { User } from '../models/user';
+import { UserMapper, UserApiModel } from '../api/user-mapper';
 import { UserService } from './user.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
@@ -37,10 +38,7 @@ export class AuthenticationService {
     login(username, password) {
         return this.http.post<any>(`${environment.api.auth.url}/auth/login`, { username, password })
             .pipe(map(token => {
-                this.setToken(token[TOKEN_NAME]);
-                this.userService.getById(this.getTokenUserId()).subscribe(u => {
-                    this.setCurrentUser(u);
-                });
+               this.setLogged(token);
             }));
     }
 
@@ -56,8 +54,15 @@ export class AuthenticationService {
 
     /** Helpers */
 
+    setLogged(token: string) {
+        this.setToken(token[TOKEN_NAME]);
+        this.userService.getById(this.getTokenUserId()).subscribe(u => {
+            this.setCurrentUser(u);
+        });
+    }
+
     isLogged() {
-        return this.getToken() && this.getCurrentUser() !== null;
+        return this.getToken() !== null;
     }
 
     getTokenUserId() {
@@ -76,7 +81,7 @@ export class AuthenticationService {
     }
 
     private setCurrentUser(user) {
-        localStorage.setItem(CURRENT_USER_NAME, JSON.stringify(user));
+        localStorage.setItem(CURRENT_USER_NAME, JSON.stringify(UserMapper.FromApi(user)));
         this.currentUserSubject.next(user);
     }
 
@@ -105,5 +110,14 @@ export class AuthenticationService {
     private removeCurrentUser() {
         localStorage.removeItem(CURRENT_USER_NAME);
         this.currentUserSubject.next(null);
+    }
+
+    updateCurrentUser(user: User) {
+        localStorage.setItem(CURRENT_USER_NAME, JSON.stringify(user));
+        this.currentUserSubject.next(user);
+    }
+
+    saveCurrentUser() {
+        return this.userService.update(UserMapper.ToApi(this.currentUserValue));
     }
 }

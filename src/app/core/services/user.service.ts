@@ -30,11 +30,7 @@ export class UserService {
         return this.http.delete(`${environment.api.auth.url}/users/${id}`);
     }
 
-    update(user: User) {
+    update(user: any) {
         return this.http.put(`${environment.api.auth.url}/users/${user.id}`, user);
-    }
-
-    getUserAvatar(user: User) {
-        return null; //user.profile.avatarBase64;
     }
 }

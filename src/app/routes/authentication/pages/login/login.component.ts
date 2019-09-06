@@ -26,13 +26,15 @@ export class LoginComponent implements OnInit {
     private dialogService: DialogService,
     private alertService: AlertService
   ) {
-    // redirect to home if already logged in
-    if (this.authenticationService.isLogged()) {
-      this.router.navigate(['/']);
-    }
+
   }
 
   ngOnInit() {
+
+    if (this.authenticationService.isLogged()) {
+      this.router.navigate(['/']);
+    }
+
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -50,19 +52,18 @@ export class LoginComponent implements OnInit {
 
     // stop here if form is invalid
     if (this.loginForm.invalid) {
+      this.alertService.show('Please fill the fields', 'Ok');
       return;
     }
 
-    this.loading = true;
     this.authenticationService.login(this.f.email.value, this.f.password.value)
-      .pipe(first())
-      .subscribe(
-        data => {
-          this.router.navigate([this.returnUrl]);
-        },
-        error => {
-          this.alertService.show(error, 'Ok');
-          this.loading = false;
-        });
+    .pipe(first())
+    .subscribe(
+      data => {
+        this.router.navigate([this.returnUrl]);
+      },
+      error => {
+        this.alertService.show('Username or password not valid', 'Ok');
+      });
   }
 }
