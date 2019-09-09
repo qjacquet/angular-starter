@@ -142,3 +142,5 @@ export const FakeBackendProvider = {
     useClass: FakeBackendInterceptor,
     multi: true
 };
+
+export const BackendProvider = [];

@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DirectivesModule } from './core/directives';
 import { ErrorInterceptor } from './core/helpers/error.interceptor';
-import { FakeBackendProvider } from './core/helpers/fake-backend';
+import { FakeBackendProvider, BackendProvider } from './core/helpers/fake-backend';
 import { JwtInterceptor } from './core/helpers/jwt.interceptor';
 import { AlertService } from './core/ui/alert/alert.service';
 import { AuthenticationService } from './core/services/authentication.service';
@@ -73,7 +73,7 @@ import { FileSelectDirective, FileDropDirective, FileUploader } from 'ng2-file-u
     { provide: MAT_DATE_LOCALE, useValue: LOCALE_ID},
 
     // provider used to create fake backend
-    //FakeBackendProvider,
+    environment.api.isFakeBackend ? FakeBackendProvider : BackendProvider,
 
     DialogService,
     AlertService,

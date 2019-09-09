@@ -7,6 +7,10 @@
         caret-color: white;
     }
 
+    #searchInput:focus::placeholder { 
+        color: white;
+    }
+
     ::ng-deep .mat-form-field {
         font-size: 32px;
         width: 100%;

@@ -6,6 +6,7 @@ export const environment = {
   serverLogLevel: NgxLoggerLevel.OFF,
 
   api: {
+    isFakeBackend: false,
     logs: {
       url: 'localhost',
     },
